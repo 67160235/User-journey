@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVACR User Journey Dashboard</title>
+    <!-- Tailwind CSS สำหรับดีไซน์ระดับโมเดิร์นแอป -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Sarabun', sans-serif; }
+        .font-title { font-family: 'Kanit', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 min-h-screen text-slate-100 flex flex-col justify-between">
+
+    <!-- ==================== 1. PAGE: LOGIN SYSTEM ==================== -->
+    <div id="login-page" class="flex-grow flex items-center justify-center p-4">
+        <div class="bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700 w-full max-w-md transform transition-all">
+            <div class="text-center mb-8">
+                <div class="inline-block p-4 bg-cyan-500/10 text-cyan-400 rounded-full mb-3 text-3xl">❄️</div>
+                <h2 class="text-2xl font-bold font-title text-white tracking-wide">HVACR Journey Portal</h2>
+                <p class="text-slate-400 text-xs mt-1">ระบบวิเคราะห์ข้อมูลอุตสาหกรรมเครื่องเย็น</p>
+            </div>
+            
+            <form id="login-form" onsubmit="handleLogin(event)" class="space-y-5">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">ชื่อผู้ใช้งาน (Username)</label>
+                    <input type="text" id="username" required placeholder="ใส่อะไรก็ได้เพื่อทดสอบ" 
+                           class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">รหัสผ่าน (Password)</label>
+                    <input type="password" id="password" required placeholder="••••••••" 
+                           class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors">
+                </div>
+                <button type="submit" 
+                        class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-medium py-3 px-4 rounded-xl shadow-lg shadow-cyan-500/20 font-title transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+                    เข้าสู่ระบบ
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== 2. PAGE: MAIN DASHBOARD (HIDDEN BY DEFAULT) ==================== -->
+    <div id="dashboard-page" class="hidden flex-grow p-4 md:p-8">
+        <div class="max-w-7xl mx-auto space-y-8">
+            
+            <!-- Dashboard Navbar -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-slate-800 p-6 rounded-2xl border border-slate-700 gap-4 shadow-xl">
+                <div>
+                    <h1 class="text-2xl font-bold text-white font-title tracking-wide flex items-center gap-2">
+                        <span>📊</span> User Journey Map Matrix
+                    </h1>
+                    <p class="text-xs text-slate-400 mt-1">Persona: คุณกิตติ (เจ้าของธุรกิจร้านกาแฟ / บ้านพักอาศัย)</p>
+                </div>
+                <button onclick="handleLogout()" 
+                        class="self-start sm:self-auto bg-slate-700 hover:bg-rose-600 text-slate-200 hover:text-white px-4 py-2 text-xs font-medium rounded-xl transition-colors font-title">
+                    ออกจากระบบ 🚪
+                </button>
+            </div>
+
+            <!-- Instruction Banner -->
+            <div class="bg-gradient-to-r from-cyan-950 to-slate-900 border border-cyan-500/30 p-4 rounded-xl flex items-center gap-3">
+                <span class="text-xl animate-pulse">💡</span>
+                <p class="text-xs md:text-sm text-cyan-300">
+                    **ระบบอินเตอร์แอคทีฟ:** ข้อมูลถูกจัดเก็บอย่างเป็นระบบ กรุณา **คลิกที่การ์ดขั้นตอนการทำงาน** ด้านล่างเพื่อดึงข้อมูลเจาะลึกเด้งออกมาโชว์
+                </p>
+            </div>
+
+            <!-- 5 Stages Grid Grid Line -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                
+                <!-- Card 1 -->
+                <div onclick="openModal(0)" class="group bg-slate-800 hover:bg-slate-700/80 border border-slate-700 hover:border-teal-500/50 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 shadow-lg flex flex-col justify-between min-h-[180px]">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl p-2 bg-teal-500/10 text-teal-400 rounded-xl">🔍</span>
+                            <span class="text-[10px] font-mono bg-teal-500/20 text-teal-300 px-2 py-0.5 rounded-full font-bold">STAGE 01</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-title group-hover:text-teal-400 transition-colors">การรับรู้และค้นหา</h3>
+                        <p class="text-xs text-slate-400 mt-1 font-mono uppercase tracking-tight">Awareness & Research</p>
+                    </div>
+                    <span class="text-xs text-cyan-400 font-medium font-title mt-4 flex items-center gap-1">คลิกเพื่อขยายดูข้อมูล ➔</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div onclick="openModal(1)" class="group bg-slate-800 hover:bg-slate-700/80 border border-slate-700 hover:border-cyan-500/50 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 shadow-lg flex flex-col justify-between min-h-[180px]">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl p-2 bg-cyan-500/10 text-cyan-400 rounded-xl">⚖️</span>
+                            <span class="text-[10px] font-mono bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded-full font-bold">STAGE 02</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-title group-hover:text-cyan-400 transition-colors">การพิจารณาเปรียบเทียบ</h3>
+                        <p class="text-xs text-slate-400 mt-1 font-mono uppercase tracking-tight">Consideration</p>
+                    </div>
+                    <span class="text-xs text-cyan-400 font-medium font-title mt-4 flex items-center gap-1">คลิกเพื่อขยายดูข้อมูล ➔</span>
+                </div>
+
+                <!-- Card 3 -->
+                <div onclick="openModal(2)" class="group bg-slate-800 hover:bg-slate-700/80 border border-slate-700 hover:border-sky-500/50 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 shadow-lg flex flex-col justify-between min-h-[180px]">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl p-2 bg-sky-500/10 text-sky-400 rounded-xl">🛠️</span>
+                            <span class="text-[10px] font-mono bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded-full font-bold">STAGE 03</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-title group-hover:text-sky-400 transition-colors">การซื้อและการติดตั้ง</h3>
+                        <p class="text-xs text-slate-400 mt-1 font-mono uppercase tracking-tight">Purchase & Installation</p>
+                    </div>
+                    <span class="text-xs text-cyan-400 font-medium font-title mt-4 flex items-center gap-1">คลิกเพื่อขยายดูข้อมูล ➔</span>
+                </div>
+
+                <!-- Card 4 -->
+                <div onclick="openModal(3)" class="group bg-slate-800 hover:bg-slate-700/80 border border-slate-700 hover:border-blue-500/50 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 shadow-lg flex flex-col justify-between min-h-[180px]">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl p-2 bg-blue-500/10 text-blue-400 rounded-xl">❄️</span>
+                            <span class="text-[10px] font-mono bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full font-bold">STAGE 04</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-title group-hover:text-blue-400 transition-colors">การใช้งานดูแลรักษา</h3>
+                        <p class="text-xs text-slate-400 mt-1 font-mono uppercase tracking-tight">Usage & Maintenance</p>
+                    </div>
+                    <span class="text-xs text-cyan-400 font-medium font-title mt-4 flex items-center gap-1">คลิกเพื่อขยายดูข้อมูล ➔</span>
+                </div>
+
+                <!-- Card 5 -->
+                <div onclick="openModal(4)" class="group bg-slate-800 hover:bg-slate-700/80 border border-slate-700 hover:border-purple-500/50 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 shadow-lg flex flex-col justify-between min-h-[180px]">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl p-2 bg-purple-500/10 text-purple-400 rounded-xl">☕</span>
+                            <span class="text-[10px] font-mono bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-full font-bold">STAGE 05</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-title group-hover:text-purple-400 transition-colors">ความภักดีและบอกต่อ</h3>
+                        <p class="text-xs text-slate-400 mt-1 font-mono uppercase tracking-tight">Loyalty & Advocacy</p>
+                    </div>
+                    <span class="text-xs text-cyan-400 font-medium font-title mt-4 flex items-center gap-1">คลิกเพื่อขยายดูข้อมูล ➔</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 3. COMPONENT: DYNAMIC POPUP MODAL (เด้งออกมาตอนคลิก) ==================== -->
+    <div id="detail-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 transition-all opacity-0">
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 transition-all duration-300">
+            
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-slate-700 flex items-center justify-between bg-slate-800/50 sticky top-0 backdrop-blur-md">
+                <div class="flex items-center gap-3">
+                    <span id="modal-icon" class="text-3xl"></span>
+                    <div>
+                        <h2 id="modal-title-th" class="text-xl font-bold text-white font-title"></h2>
+                        <p id="modal-title-en" class="text-xs text-slate-400 font-mono uppercase tracking-wider"></p>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white bg-slate-700 hover:bg-slate-600 p-2 rounded-xl text-sm transition-colors">
+                    ✕ ปิดหน้าต่าง
+                </button>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="p-6 space-y-6">
+                <!-- Grid 3 คอลัมน์ด้านบน -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/60">
+                        <div class="text-xs font-bold text-cyan-400 mb-2 font-title flex items-center gap-1">🎯 เป้าหมายลูกค้า</div>
+                        <ul id="modal-goals" class="text-xs text-slate-300 space-y-1 list-disc pl-4"></ul>
+                    </div>
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/60">
+                        <div class="text-xs font-bold text-slate-400 mb-2 font-title flex items-center gap-1">🏃 กิจกรรมที่ทำ</div>
+                        <p id="modal-actions" class="text-xs text-slate-300 leading-relaxed"></p>
+                    </div>
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/60">
+                        <div class="text-xs font-bold text-slate-400 mb-2 font-title flex items-center gap-1">📱 จุดสัมผัส (Touchpoints)</div>
+                        <p id="modal-touchpoints" class="text-xs text-slate-400 font-medium leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <!-- ปัญหาและโอกาสพัฒนา (เน้นสีเข้มข้นสะใจ) -->
+                <div class="space-y-4">
+                    <div class="bg-rose-950/40 border border-rose-500/30 p-4 rounded-xl">
+                        <div class="text-sm font-bold text-rose-400 mb-1 font-title flex items-center gap-1">⚠️ จุดเจ็บปวดวิกฤต (Pain Points)</div>
+                        <p id="modal-pains" class="text-xs text-rose-200/90 leading-relaxed font-medium"></p>
+                    </div>
+                    
+                    <div class="bg-emerald-950/40 border border-emerald-500/30 p-4 rounded-xl">
+                        <div class="text-sm font-bold text-emerald-400 mb-1 font-title flex items-center gap-1">💡 โอกาสในการพัฒนาเชิงระบบ (Opportunities)</div>
+                        <p id="modal-opps" class="text-xs text-emerald-200/90 leading-relaxed font-medium"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center p-4 text-[10px] text-slate-600 border-t border-slate-800 bg-slate-950/20">
+        HVACR User Journey Interactive Platform • Built for Enterprise Architecture Analysis
+    </footer>
+
+    <!-- ==================== 4. JAVASCRIPT SYSTEM ==================== -->
+    <script>
+        // ข้อมูลหลังบ้านอย่างเป็นระบบ (Systematic Data Object)
+        const journeyData = [
+            {
+                icon: "🔍",
+                titleTh: "1. การรับรู้และการค้นหาข้อมูล",
+                titleEn: "Awareness & Research",
+                goals: ["หาแอร์ประหยัดไฟ ทนทานสูง", "คำนวณ BTU ให้เหมาะสมกับพื้นที่ร้าน"],
+                actions: "ค้นหาข้อมูลเชิงเทคนิคบน Google, อ่านรีวิวเปรียบเทียบใน Pantip/YouTube, เข้าใช้เว็บของแบรนด์เพื่อคำนวณขนาดห้อง",
+                touchpoints: "Google Search Engine, โซเชียลมีเดีย, เว็บไซต์หลักของแบรนด์เครื่องเย็น",
+                pains: "✕ ข้อมูลสเปกทางเทคนิคยากเกินไปสำหรับคนทั่วไป เลือกขนาด BTU ไม่ถูก กลัวซื้อไปแล้วร้านไม่เย็น",
+                opps: "✨ พัฒนาโปรแกรมหรือวิดเจ็ตคำนวณ BTU บนหน้าแรกของเว็บแบบกรอกแค่กว้างยาวแล้วรู้ผลทันทีเพื่อลดความสับสน"
+            },
+            {
+                icon: "⚖️",
+                titleTh: "2. การพิจารณาและเปรียบเทียบรุ่น",
+                titleEn: "Consideration",
+                goals: ["เปรียบเทียบงบประมาณเทียบกับฟังก์ชันฟิลเตอร์ PM2.5", "เช็กระยะเวลาและการการันตีมอร์เตอร์"],
+                actions: "เดินทางไปตรวจสอบวัสดุเครื่องจริงที่ห้างหรือโชว์รูมตัวแทนจำหน่าย, ขอใบเสนอราคาเพื่อเปรียบเทียบสิทธิประโยชน์",
+                touchpoints: "โชว์รูมสินค้า (HomePro/PowerBuy), พนักงานขายประจำแบรนด์ (PC), โบรชัวร์เปรียบเทียบสเปก",
+                pains: "✕ ราคาสินค้าไม่โปร่งใส มีค่าท่อแอร์หรือค่าแรงติดตั้งแฝงเพิ่มเข้ามาหน้างาน, รุ่นสินค้าเยอะจนจำแนกข้อดีไม่ได้",
+                opps: "✨ ชูจุดขายเรื่องราคาสุทธิ (Net Price) ที่มัดรวมค่าติดตั้งและอุปกรณ์เสริมไว้ในราคากลางตั้งแต่แรกอย่างโปร่งใส"
+            },
+            {
+                icon: "🛠️",
+                titleTh: "3. การตัดสินใจซื้อและการติดตั้งระบบ",
+                titleEn: "Purchase & Installation",
+                goals: ["ช่องทางชำระเงินยืดหยุ่น", "ช่างติดตั้งมีมาตรฐานสูงตามคู่มือวิศวกรรม ไม่ทิ้งงาน"],
+                actions: "รูดบัตรผ่อนชำระ, ทำการจองคิวลงตารางนัดวันติดตั้งแอร์, สแตนด์บายเพื่อคุมงานติดตั้งและท่อระบายน้ำทิ้ง",
+                touchpoints: "ระบบเคาน์เตอร์แคชเชียร์/Gateway ออนไลน์, ทีมช่างเทคนิคเอาท์ซอร์ส, เอกสารใบรับประกันสินค้า",
+                pains: "✕ ทีมช่างติดตั้งมาสาย ไม่ระวังหน้างานทำให้ผนังร้านเป็นรอย, งานเดินท่อน้ำยาแอร์ไม่เนี้ยบเกิดการรั่วซึมในภายหลัง",
+                opps: "✨ ยกระดับมาตรฐานด้วยการเปิดตัวแอปพลิเคชันจองและติดตามสถานะการเดินทางของช่างแบบเรียลไทม์พร้อมการประเมินดาวคะแนน"
+            },
+            {
+                icon: "❄️",
+                titleTh: "4. การใช้งานจริงและการบำรุงรักษา",
+                titleEn: "Usage & Maintenance",
+                goals: ["เครื่องเปิดแล้วเย็นเร็วทันใจ ประหยัดค่าไฟจริง", "ศูนย์เรียกคิวง่ายและช่างล้างแอร์ไม่โกงราคา"],
+                actions: "เปิดใช้งานเครื่องปรับอากาศทุกวัน, ถอดฟิลเตอร์กรองฝุ่นมาล้างเองเบื้องต้นทุกเดือน, นัดช่างมาล้างระบบใหญ่ตามรอบ",
+                touchpoints: "รีโมทคอนโทรล / โมบายแอปสั่งงานข้ามเครือข่าย, Call Center ศูนย์บริการลูกค้า, ช่างล้างแอร์ตามรอบ",
+                pains: "✕ บิลค่าไฟพุ่งสูงเกินความคาดหมาย, เครื่องเริ่มมีเสียงพัดลมดังรบกวนลูกค้าในร้าน, หาช่างล้างแอร์มาตรฐานยาก",
+                opps: "✨ Smart Service Feature: ส่งระบบแจ้งเตือนอัตโนมัติผ่านสมาร์ทโฟนเมื่อแอร์ทำงานครบชั่วโมงที่ต้องล้าง พร้อมกดจองคิวในแอปได้ทันที"
+            },
+            {
+                icon: "☕",
+                titleTh: "5. ความภักดีในแบรนด์และการบอกต่อ",
+                titleEn: "Loyalty & Advocacy",
+                goals: ["ได้รับสิทธิประโยชน์พิเศษต่อเนื่อง", "กลับมาเลือกซื้อแบรนด์เดิมเมื่อมีการขยายสาขาธุรกิจ"],
+                actions: "เข้าไปโพสต์รีวิวให้คะแนนบนแฟนเพจ, แนะนำปากต่อปากให้กลุ่มเพื่อนผู้ประกอบการ, ซื้อสิทธิ์ต่ออายุประกันเพิ่ม",
+                touchpoints: "Line Official Account, สื่อรีวิวบนโซเชียล, ระบบสะสมคะแนน CRM ของแบรนด์",
+                pains: "✕ แบรนด์ตัดการติดต่อและเงียบหายไปทันทีหลังจบการขาย, ขั้นตอนการเคลมอะไหล่คอมเพรสเซอร์ยุ่งยากซับซ้อนและรอนาน",
+                opps: "✨ พัฒนาโปรแกรม CRM มอบส่วนลดพิเศษสำหรับบริการล้างแอร์ครั้งต่อไป หรือข้อเสนอสิทธิ์การนำเครื่องเก่ามาเทิร์นรับเครื่องใหม่ราคาพิเศษ"
+            }
+        ];
+
+        // 🟢 ระบบ Authentication (Login) แบบง่าย
+        function handleLogin(event) {
+            event.preventDefault(); // ป้องกันการรีเฟรชหน้าจอ
+            
+            // ซ่อนหน้า Login และแสดงหน้า Dashboard ทันที
+            document.getElementById('login-page').classList.add('hidden');
+            const dashboard = document.getElementById('dashboard-page');
+            dashboard.classList.remove('hidden');
+            dashboard.classList.add('animate-[fadeIn_0.5s_ease-out]');
+        }
+
+        function handleLogout() {
+            // สลับกลับมาหน้า Login
+            document.getElementById('dashboard-page').classList.add('hidden');
+            document.getElementById('login-page').classList.remove('hidden');
+            // ล้างค่าในฟอร์ม
+            document.getElementById('login-form').reset();
+        }
+
+        // 🔵 ระบบ Interactive Pop-up Modal (คลิกแล้วเด้งข้อมูล)
+        function openModal(index) {
+            const data = journeyData[index];
+            
+            // ใส่ข้อมูลลงใน Modal Components
+            document.getElementById('modal-icon').textContent = data.icon;
+            document.getElementById('modal-title-th').textContent = data.titleTh;
+            document.getElementById('modal-title-en').textContent = data.titleEn;
+            
+            // จัดการ Goals (สร้างเป็นลิสต์รายการ)
+            const goalsList = document.getElementById('modal-goals');
+            goalsList.innerHTML = '';
+            data.goals.forEach(goal => {
+                const li = document.createElement('li');
+                li.textContent = goal;
+                goalsList.appendChild(li);
+            });
+            
+            document.getElementById('modal-actions').textContent = data.actions;
+            document.getElementById('modal-touchpoints').textContent = data.touchpoints;
+            document.getElementById('modal-pains').textContent = data.pains;
+            document.getElementById('modal-opps').textContent = data.opps;
+            
+            // สั่งเปิด Modal ให้เด้งแสดงผล
+            const modal = document.getElementById('detail-modal');
+            modal.classList.remove('hidden');
+            // ทำอนิเมชั่น Fade-in Smooth
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('div').classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('detail-modal');
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.add('scale-95');
+            // ซ่อนกล่องหลังจากอนิเมชั่นจบ
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // กดพื้นที่ว่างด้านนอกเพื่อปิด Modal ได้ด้วย
+        window.onclick = function(event) {
+            const modal = document.getElementById('detail-modal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+
+</body>
+</html>
