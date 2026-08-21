@@ -225,9 +225,8 @@
 
     <!-- ==================== JAVASCRIPT SYSTEM ==================== -->
     <script>
-        // --- 1. ข้อมูลแคตตาล็อกสินค้า (พร้อมรูปภาพจริงตรงตามหมวดหมู่) ---
+        // --- 1. ข้อมูลแคตตาล็อกสินค้า 52 รายการ (ใช้อิโมจิที่ตรงตามหมวดหมู่เป๊ะๆ) ---
         const catalogItems = [
-            // แอร์ติดผนัง (🌬️)
             { id: 1, name: "แอร์ผนัง Inverter (9,000 BTU) ประหยัดไฟเบอร์ 5", category: "แอร์ติดผนัง", price: 12900, icon: "🌬️" },
             { id: 2, name: "แอร์ผนัง Inverter (12,000 BTU) รุ่นยอดนิยม", category: "แอร์ติดผนัง", price: 15900, icon: "🌬️" },
             { id: 3, name: "แอร์ผนัง Inverter (15,000 BTU) เย็นเร็วทันใจ", category: "แอร์ติดผนัง", price: 18900, icon: "🌬️" },
@@ -238,7 +237,6 @@
             { id: 8, name: "แอร์ผนัง Fixed Speed (18,000 BTU)", category: "แอร์ติดผนัง", price: 16900, icon: "🌬️" },
             { id: 9, name: "แอร์ผนัง Fixed Speed (24,000 BTU)", category: "แอร์ติดผนัง", price: 23900, icon: "🌬️" },
             { id: 10, name: "แอร์เคลื่อนที่ Portable (9,000 BTU)", category: "แอร์ติดผนัง", price: 7900, icon: "🌬️" },
-            // แอร์เชิงพาณิชย์ (🏢)
             { id: 11, name: "แอร์แขวนใต้ฝ้าเพดาน (18,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 24000, icon: "🏢" },
             { id: 12, name: "แอร์แขวนใต้ฝ้าเพดาน (24,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 29000, icon: "🏢" },
             { id: 13, name: "แอร์แขวนใต้ฝ้าเพดาน (30,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 34000, icon: "🏢" },
@@ -251,43 +249,39 @@
             { id: 20, name: "แอร์สี่ทิศทาง Cassette Type (30,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 42000, icon: "🏢" },
             { id: 21, name: "แอร์สี่ทิศทาง Cassette Type (36,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 48000, icon: "🏢" },
             { id: 22, name: "แอร์สี่ทิศทาง Cassette Type (48,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 55000, icon: "🏢" },
-            // อุปกรณ์/อะไหล่ (〰️)
             { id: 23, name: "ท่อน้ำยาแอร์สำเร็จรูปพร้อมฉนวน (4 เมตร)", category: "อุปกรณ์/อะไหล่", price: 1250, icon: "〰️" },
             { id: 24, name: "ท่อน้ำยาแอร์สำเร็จรูปพร้อมฉนวน (6 เมตร)", category: "อุปกรณ์/อะไหล่", price: 1850, icon: "〰️" },
             { id: 25, name: "ท่อน้ำยาแอร์สำเร็จรูปพร้อมฉนวน (10 เมตร)", category: "อุปกรณ์/อะไหล่", price: 2950, icon: "〰️" },
             { id: 26, name: "เบรกเกอร์กันดูดสำหรับแอร์ (15A)", category: "อุปกรณ์/อะไหล่", price: 380, icon: "⚡" },
             { id: 27, name: "เบรกเกอร์กันดูดสำหรับแอร์ (20A)", category: "อุปกรณ์/อะไหล่", price: 420, icon: "⚡" },
             { id: 28, name: "เบรกเกอร์กันดูดสำหรับแอร์ (30A)", category: "อุปกรณ์/อะไหล่", price: 450, icon: "⚡" },
-            { id: 29, name: "ขาแขวนคอมเพรสเซอร์แอร์เหล็กหนาพิเศษ", category: "อุปกรณ์/อะไหล่", price: 350, icon: "〰️" },
-            { id: 30, name: "ขาแขวนคอมเพรสเซอร์แอร์แบบกระเช้า", category: "อุปกรณ์/อะไหล่", price: 650, icon: "〰️" },
+            { id: 29, name: "ขาแขวนคอมเพรสเซอร์แอร์เหล็กหนาพิเศษ", category: "อุปกรณ์/อะไหล่", price: 350, icon: "🏗️" },
+            { id: 30, name: "ขาแขวนคอมเพรสเซอร์แอร์แบบกระเช้า", category: "อุปกรณ์/อะไหล่", price: 650, icon: "🏗️" },
             { id: 31, name: "เซ็นเซอร์วัดอุณหภูมิห้อง IoT (Smart HVAC)", category: "อุปกรณ์/อะไหล่", price: 890, icon: "📡" },
             { id: 32, name: "เซ็นเซอร์วัดความชื้นและ CO2 (Smart Sensor)", category: "อุปกรณ์/อะไหล่", price: 1590, icon: "📡" },
-            { id: 33, name: "Smart Thermostat ควบคุมแอร์ผ่าน Wi-Fi", category: "อุปกรณ์/อะไหล่", price: 2290, icon: "📡" },
+            { id: 33, name: "Smart Thermostat ควบคุมแอร์ผ่าน Wi-Fi", category: "อุปกรณ์/อะไหล่", price: 2290, icon: "📱" },
             { id: 34, name: "น้ำยาแอร์ R32 แท้ (ถัง 10 กิโลกรัม)", category: "น้ำยา/เคมีภัณฑ์", price: 2400, icon: "🛢️" },
             { id: 35, name: "น้ำยาแอร์ R410A (ถัง 11.3 กิโลกรัม)", category: "น้ำยา/เคมีภัณฑ์", price: 2800, icon: "🛢️" },
             { id: 36, name: "น้ำยาแอร์ R22 (ถัง 13.6 กิโลกรัม)", category: "น้ำยา/เคมีภัณฑ์", price: 3500, icon: "🛢️" },
-            { id: 37, name: "รีโมทคอนโทรลแอร์สากลหน้าจอ LCD", category: "อุปกรณ์/อะไหล่", price: 290, icon: "📡" },
+            { id: 37, name: "รีโมทคอนโทรลแอร์สากลหน้าจอ LCD", category: "อุปกรณ์/อะไหล่", price: 290, icon: "📱" },
             { id: 38, name: "ปั๊มน้ำทิ้งแอร์อัตโนมัติ (Mini Condensate Pump)", category: "อุปกรณ์/อะไหล่", price: 1450, icon: "⚙️" },
-            { id: 39, name: "ยางรองขาตั้งคอมเพรสเซอร์แอร์ (ชุด 4 ชิ้น)", category: "อุปกรณ์/อะไหล่", price: 120, icon: "〰️" },
+            { id: 39, name: "ยางรองขาตั้งคอมเพรสเซอร์แอร์ (ชุด 4 ชิ้น)", category: "อุปกรณ์/อะไหล่", price: 120, icon: "🏗️" },
             { id: 40, name: "เทปพันท่อแอร์แบบมีกาว (ม้วนใหญ่)", category: "อุปกรณ์/อะไหล่", price: 65, icon: "〰️" },
             { id: 41, name: "เทปพันท่อแอร์แบบไม่มีกาว", category: "อุปกรณ์/อะไหล่", price: 45, icon: "〰️" },
             { id: 42, name: "ฉนวนหุ้มท่อน้ำยาแอร์ Armaflex (หนา 3/8 นิ้ว)", category: "อุปกรณ์/อะไหล่", price: 320, icon: "〰️" },
             { id: 43, name: "ฉนวนหุ้มท่อน้ำยาแอร์ Armaflex (หนา 1/2 นิ้ว)", category: "อุปกรณ์/อะไหล่", price: 390, icon: "〰️" },
             { id: 44, name: "หน้ากากแอร์สี่ทิศทางพร้อมรีโมทไร้สาย", category: "อุปกรณ์/อะไหล่", price: 3200, icon: "🏢" },
             { id: 45, name: "แผ่นกรองอากาศคาร์บอนกำจัดกลิ่นแอร์ (แพ็ก 2 ชิ้น)", category: "อุปกรณ์/อะไหล่", price: 190, icon: "🌬️" },
-            // อะไหล่เครื่อง (⚙️)
             { id: 46, name: "มอเตอร์พัดลมคอยล์เย็นแอร์ติดผนัง", category: "อะไหล่เครื่อง", price: 1200, icon: "⚙️" },
             { id: 47, name: "มอเตอร์พัดลมคอยล์ร้อนแอร์ภายนอก", category: "อะไหล่เครื่อง", price: 1850, icon: "⚙️" },
-            { id: 48, name: "คาปาซิเตอร์รันคอมเพรสเซอร์แอร์ (35 uF)", category: "อะไหล่เครื่อง", price: 250, icon: "⚙️" },
-            { id: 49, name: "คาปาซิเตอร์รันคอมเพรสเซอร์แอร์ (50 uF)", category: "อะไหล่เครื่อง", price: 320, icon: "⚙️" },
-            // เครื่องมือช่าง (🛠️)
+            { id: 48, name: "คาปาซิเตอร์รันคอมเพรสเซอร์แอร์ (35 uF)", category: "อะไหล่เครื่อง", price: 250, icon: "⚡" },
+            { id: 49, name: "คาปาซิเตอร์รันคอมเพรสเซอร์แอร์ (50 uF)", category: "อะไหล่เครื่อง", price: 320, icon: "⚡" },
             { id: 50, name: "ถุงผ้าใบสำหรับล้างแอร์ติดผนังพร้อมท่อน้ำทิ้ง", category: "เครื่องมือช่าง", price: 450, icon: "🛠️" },
             { id: 51, name: "ชุดประแจขันแฟลร์นัทท่อน้ำยาแอร์", category: "เครื่องมือช่าง", price: 850, icon: "🛠️" },
             { id: 52, name: "เกจวัดน้ำยาแอร์ (Manifold Gauge Set)", category: "เครื่องมือช่าง", price: 1290, icon: "🛠️" }
         ];
 
-        // --- ข้อมูลเปรียบเทียบ (Step 2) ---
-        // --- 2. ข้อมูลเปรียบเทียบ (อัปเดต 10+ รายการ พร้อมค่าซ่อมและค่าบริการจริง) ---
+        // --- ข้อมูลเปรียบเทียบ (Step 2 - อัปเดต 10+ รายการ พร้อมเรทราคาค่าซ่อมและบริการจริงในไทย) ---
         const comparisonData = [
             { model: "ล้างแอร์ติดผนัง (9k-18k BTU)", btu: "N/A", price: "฿600-800", install: "N/A", warranty: "30 วัน" },
             { model: "ล้างแอร์เชิงพาณิชย์ (ฝังฝ้า)", btu: "N/A", price: "฿1,000-1,500", install: "N/A", warranty: "30 วัน" },
@@ -301,40 +295,6 @@
             { model: "Cassette Type 48,000 BTU", btu: "48,000", price: "฿55,000", install: "ฟรี", warranty: "5 ปี" },
             { model: "ติดตั้งแอร์ใหม่ (มาตรฐาน)", btu: "ทุกขนาด", price: "฿4,500-5,500", install: "ฟรี", warranty: "1 ปี" }
         ];
-
-        // --- แก้ไขฟังก์ชันการแสดงผลตารางเปรียบเทียบใน openInteractiveModal ---
-        // เปลี่ยนในส่วน if (index === 1) ของฟังก์ชัน openInteractiveModal เป็นดังนี้:
-        else if (index === 1) {
-            iconEl.textContent = "⚖️";
-            titleEl.textContent = "2. การพิจารณาเปรียบเทียบ (บริการและราคาสินค้าจริง)";
-            let compRows = comparisonData.map(c => `
-                <tr class="border-b border-slate-700/50 hover:bg-slate-800 transition-colors">
-                    <td class="py-3 font-semibold text-white text-xs">${c.model}</td>
-                    <td class="text-slate-300 text-xs">${c.btu}</td>
-                    <td class="text-cyan-400 font-bold text-xs">${c.price}</td>
-                    <td class="text-emerald-400 text-xs">${c.install}</td>
-                    <td class="text-slate-300 text-xs">${c.warranty}</td>
-                </tr>
-            `).join('');
-
-            bodyContent.innerHTML = `
-                <div class="space-y-4 text-slate-200 text-sm leading-relaxed">
-                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 overflow-x-auto">
-                        <h4 class="font-bold text-blue-400 font-title mb-2">📋 ตารางเปรียบเทียบค่าบริการและราคาเครื่องปรับอากาศ</h4>
-                        <table class="w-full text-left border-collapse mt-3">
-                            <tr class="border-b border-slate-700 text-slate-400 text-xs uppercase">
-                                <th class="py-2">รายการ/รุ่น</th>
-                                <th class="py-2">BTU</th>
-                                <th class="py-2">ราคา</th>
-                                <th class="py-2">ค่าติดตั้ง</th>
-                                <th class="py-2">ประกันงาน</th>
-                            </tr>
-                            ${compRows}
-                        </table>
-                    </div>
-                </div>
-            `;
-        }
 
         let cart = [];
 
@@ -444,9 +404,9 @@
                 titleEl.textContent = "1. การรับรู้และการค้นหา (Catalog & Search Engine 50+ Items)";
                 bodyContent.innerHTML = `
                     <div class="space-y-4">
-                        <p class="text-sm text-slate-300">ค้นหารายการเครื่องปรับอากาศ หรืออุปกรณ์ติดตั้ง (แสดงมากกว่า 50 รายการ พร้อมรูปภาพสินค้าจริง):</p>
+                        <p class="text-sm text-slate-300">ค้นหารายการเครื่องปรับอากาศ หรืออุปกรณ์ติดตั้ง (มีมากกว่า 50 รายการ):</p>
                         <input type="text" id="search-input" onkeyup="filterCatalog()" placeholder="พิมพ์ค้นหา เช่น แอร์, ท่อน้ำยา, น้ำยาแอร์, เบรกเกอร์..." class="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400">
-                        <div id="catalog-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 max-h-[450px] overflow-y-auto pr-2"></div>
+                        <div id="catalog-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 max-h-[400px] overflow-y-auto pr-2"></div>
                     </div>
                 `;
                 renderCatalog(catalogItems);
@@ -455,26 +415,26 @@
                 iconEl.textContent = "⚖️";
                 titleEl.textContent = "2. การพิจารณาเปรียบเทียบ (Consideration & Quotation)";
                 let compRows = comparisonData.map(c => `
-                    <tr class="border-b border-slate-700/50">
-                        <td class="py-3 font-semibold text-white">${c.model}</td>
-                        <td class="text-slate-300">${c.btu}</td>
-                        <td class="text-cyan-400 font-bold">${c.price}</td>
-                        <td class="text-emerald-400">${c.install}</td>
-                        <td class="text-slate-300">${c.warranty}</td>
+                    <tr class="border-b border-slate-700/50 hover:bg-slate-800 transition-colors">
+                        <td class="py-3 font-semibold text-white text-xs">${c.model}</td>
+                        <td class="text-slate-300 text-xs">${c.btu}</td>
+                        <td class="text-cyan-400 font-bold text-xs">${c.price}</td>
+                        <td class="text-emerald-400 text-xs">${c.install}</td>
+                        <td class="text-slate-300 text-xs">${c.warranty}</td>
                     </tr>
                 `).join('');
 
                 bodyContent.innerHTML = `
                     <div class="space-y-4 text-slate-200 text-sm leading-relaxed">
-                        <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
-                            <h4 class="font-bold text-blue-400 font-title mb-2">📋 ตารางเปรียบเทียบสเปกและราคาแอร์ทุกประเภท</h4>
-                            <table class="w-full text-left border-collapse mt-3 text-xs md:text-sm">
-                                <tr class="border-b border-slate-700 text-slate-400 text-xs">
-                                    <th class="py-2">รุ่นเครื่องปรับอากาศ</th>
+                        <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 overflow-x-auto">
+                            <h4 class="font-bold text-blue-400 font-title mb-2">📋 ตารางเปรียบเทียบค่าบริการและราคาเครื่องปรับอากาศ</h4>
+                            <table class="w-full text-left border-collapse mt-3">
+                                <tr class="border-b border-slate-700 text-slate-400 text-xs uppercase">
+                                    <th class="py-2">รายการ/รุ่น</th>
                                     <th class="py-2">BTU</th>
-                                    <th class="py-2">ราคาจำหน่าย</th>
+                                    <th class="py-2">ราคา</th>
                                     <th class="py-2">ค่าติดตั้ง</th>
-                                    <th class="py-2">รับประกันคอม</th>
+                                    <th class="py-2">ประกันงาน</th>
                                 </tr>
                                 ${compRows}
                             </table>
@@ -540,14 +500,16 @@
             }, 10);
         }
 
-        // --- ฟังก์ชันแสดงแคตตาล็อกสินค้าพร้อมรูปภาพจริง ---
+        // --- ฟังก์ชันแสดงแคตตาล็อกสินค้าพร้อมอิโมจิ ---
         function renderCatalog(items) {
             const listEl = document.getElementById('catalog-list');
             if(!listEl) return;
             listEl.innerHTML = items.map(item => `
                 <div class="bg-slate-800/60 border border-slate-700 p-3 rounded-2xl flex items-center justify-between gap-3 shadow-md hover:border-cyan-500/50 transition-all">
                     <div class="flex items-center gap-3">
-                        <img src="${item.img}" alt="${item.name}" class="w-14 h-14 object-cover rounded-xl border border-slate-600 shadow-sm shrink-0">
+                        <div class="w-12 h-12 bg-slate-900 rounded-xl border border-slate-700 flex items-center justify-center text-2xl shrink-0 shadow-inner">
+                            ${item.icon}
+                        </div>
                         <div>
                             <h5 class="text-xs font-bold text-white line-clamp-1">${item.name}</h5>
                             <span class="text-[9px] bg-slate-700/80 text-cyan-300 px-1.5 py-0.5 rounded">${item.category}</span>
@@ -580,7 +542,7 @@
                 : cart.map((item, idx) => `
                     <div class="flex justify-between items-center bg-slate-800/40 p-2.5 rounded-xl text-xs gap-2">
                         <div class="flex items-center gap-2">
-                            <img src="${item.img}" class="w-8 h-8 object-cover rounded-lg border border-slate-700">
+                            <span class="text-lg">${item.icon}</span>
                             <span class="line-clamp-1">${item.name}</span>
                         </div>
                         <div class="flex items-center gap-3 shrink-0">
