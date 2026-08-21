@@ -70,3 +70,6 @@ npm start
 
 # 2. เริ่มต้นการทำงานของเซิร์ฟเวอร์
 npm start
+
+**วิธีที่ 2: รันผ่าน Docker Compose**
+docker-compose up -d
