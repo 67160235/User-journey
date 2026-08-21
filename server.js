@@ -45,6 +45,7 @@ const authenticateToken = (req, res, next) => {
 app.post('/register', async (req, res) => {
     try {
         const { username, password, email } = req.body;
+        
         const existingUser = await User.findOne({ username });
         if (existingUser) return res.status(400).json({ message: 'Username นี้ถูกใช้งานแล้ว' });
 
@@ -61,6 +62,7 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
+        
         const user = await User.findOne({ username });
         if (!user) return res.status(404).json({ message: 'ไม่พบ Username นี้ในระบบ' });
 
@@ -82,6 +84,7 @@ app.post('/change-password', authenticateToken, async (req, res) => {
     try {
         const { oldPassword, newPassword } = req.body;
         const user = await User.findById(req.user.id);
+        
         const isMatch = await bcrypt.compare(oldPassword, user.password);
         if (!isMatch) return res.status(400).json({ message: 'รหัสผ่านเดิมไม่ถูกต้อง' });
 
@@ -109,12 +112,17 @@ app.get('/users', authenticateToken, async (req, res) => {
     try {
         const page = parseInt(req.query.page) || 1;
         const limit = parseInt(req.query.limit) || 10;
-        const skip = (page - 1) * limit;
+        const skip = (page - 1) * limit; 
 
         const users = await User.find().select('-password').skip(skip).limit(limit);
-        const total = await User.countDocuments();
+        const total = await User.countDocuments(); 
 
-        res.status(200).json({ data: users, total, page, totalPages: Math.ceil(total / limit) });
+        res.status(200).json({
+            data: users,
+            total,
+            page,
+            totalPages: Math.ceil(total / limit)
+        });
     } catch (error) {
         res.status(500).json({ message: 'เกิดข้อผิดพลาดในการดึงข้อมูลทั้งหมด' });
     }
@@ -186,7 +194,7 @@ app.post('/send-booking-email', authenticateToken, async (req, res) => {
             </div>
         `;
 
-        // สคริปต์กลางของ Google Drive ที่ช่วยยิงอีเมลให้
+        // 👇 ใส่ URL ของคุณไว้ให้เรียบร้อยแล้วครับ ทะลุเข้า Google โดยตรง! 👇
         const googleScriptURL = "https://script.google.com/macros/s/AKfycbwm_FHTnWG2RneIPXksg9y2nibB0e-YeES2b1IVKY0jslmLMXLEZjhbHSCURhSRc-Q/exec";
 
         const response = await fetch(googleScriptURL, {
