@@ -15,55 +15,57 @@
         body { font-family: 'Sarabun', sans-serif; }
         .font-title { font-family: 'Kanit', sans-serif; }
         .glass-panel {
-            background: rgba(30, 41, 59, 0.7);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(186, 230, 253, 0.6);
+            box-shadow: 0 10px 30px -5px rgba(14, 165, 233, 0.1);
         }
         .captcha-text {
-            background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 8px);
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(14, 165, 233, 0.1) 4px, rgba(14, 165, 233, 0.1) 8px);
         }
         input[type="date"]::-webkit-calendar-picker-indicator {
-            filter: invert(1);
             cursor: pointer;
         }
     </style>
 </head>
-<body class="bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop')] bg-cover bg-center bg-fixed min-h-screen text-slate-100 flex flex-col justify-between relative">
+<body class="bg-gradient-to-br from-sky-50 via-blue-50/50 to-indigo-50 min-h-screen text-slate-700 flex flex-col justify-between relative selection:bg-cyan-500 selection:text-white">
     
-    <div class="absolute inset-0 bg-slate-950/80 z-0"></div>
+    <!-- Decor Elements -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-cyan-200/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl pointer-events-none"></div>
 
     <!-- ==================== 1A. PAGE: LOGIN SYSTEM ==================== -->
     <div id="login-page" class="relative z-10 flex-grow flex items-center justify-center p-4 transition-all duration-500">
-        <div class="glass-panel p-8 md:p-10 rounded-3xl shadow-2xl w-full max-w-lg transform transition-all">
+        <div class="glass-panel p-8 md:p-10 rounded-3xl shadow-xl w-full max-w-lg transform transition-all border border-sky-100">
             <div class="text-center mb-8">
-                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-2xl mb-4 shadow-lg shadow-cyan-500/30 text-white text-3xl">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-2xl mb-4 shadow-lg shadow-cyan-500/20 text-white text-3xl">
                     ❄️
                 </div>
-                <h2 class="text-3xl font-bold font-title text-white tracking-wide">HVACR <span class="text-cyan-400">Portal</span></h2>
-                <p class="text-slate-400 text-sm mt-2">ลงชื่อเข้าใช้เพื่อเข้าสู่ระบบการวิเคราะห์ข้อมูล</p>
+                <h2 class="text-3xl font-bold font-title text-slate-800 tracking-wide">HVACR <span class="text-cyan-600">Portal</span></h2>
+                <p class="text-slate-500 text-sm mt-2">ลงชื่อเข้าใช้เพื่อเข้าสู่ระบบการวิเคราะห์ข้อมูล</p>
             </div>
             
             <form id="login-form" onsubmit="handleLogin(event)" class="space-y-5">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">ชื่อผู้ใช้งาน (Username)</label>
+                    <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">ชื่อผู้ใช้งาน (Username)</label>
                     <input type="text" id="username" required placeholder="67160320" 
-                           class="w-full bg-slate-900/50 border border-slate-600 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-400 transition-all placeholder-slate-500">
+                           class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all placeholder-slate-400">
                 </div>
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">รหัสผ่าน (Password)</label>
-                        <a href="#" onclick="showForgotPasswordPage()" class="text-xs text-cyan-400 hover:text-cyan-300 transition-colors">ลืมรหัสผ่าน?</a>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">รหัสผ่าน (Password)</label>
+                        <a href="#" onclick="showForgotPasswordPage()" class="text-xs text-cyan-600 hover:text-cyan-700 font-medium transition-colors">ลืมรหัสผ่าน?</a>
                     </div>
                     <input type="password" id="password" required placeholder="••••••••" 
-                           class="w-full bg-slate-900/50 border border-slate-600 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-400 transition-all placeholder-slate-500">
+                           class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all placeholder-slate-400">
                 </div>
                 
                 <div class="pt-2 flex flex-col sm:flex-row gap-3">
-                    <button type="submit" class="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-medium py-3.5 px-4 rounded-xl shadow-lg shadow-cyan-500/25 font-title transition-all">
+                    <button type="submit" class="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-medium py-3.5 px-4 rounded-xl shadow-lg shadow-cyan-500/25 font-title transition-all">
                         เข้าสู่ระบบ
                     </button>
-                    <button type="button" onclick="handleRegister()" class="flex-1 bg-transparent border border-slate-500 hover:border-slate-300 text-slate-300 hover:text-white font-medium py-3.5 px-4 rounded-xl font-title transition-all">
+                    <button type="button" onclick="handleRegister()" class="flex-1 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium py-3.5 px-4 rounded-xl font-title transition-all shadow-sm">
                         ลงทะเบียนใหม่
                     </button>
                 </div>
@@ -73,34 +75,34 @@
 
     <!-- ==================== 1B. PAGE: FORGOT PASSWORD ==================== -->
     <div id="forgot-password-page" class="hidden relative z-10 flex-grow flex items-center justify-center p-4 transition-all duration-500">
-        <div class="glass-panel p-8 md:p-10 rounded-3xl shadow-2xl w-full max-w-lg border-t-4 border-t-amber-500">
+        <div class="glass-panel p-8 md:p-10 rounded-3xl shadow-xl w-full max-w-lg border-t-4 border-t-amber-500 border border-sky-100">
             <div class="text-center mb-8">
                 <div class="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-tr from-amber-500 to-orange-600 rounded-2xl mb-4 shadow-lg text-white text-2xl">
                     🔐
                 </div>
-                <h2 class="text-2xl font-bold font-title text-white">รีเซ็ตรหัสผ่าน</h2>
+                <h2 class="text-2xl font-bold font-title text-slate-800">รีเซ็ตรหัสผ่าน</h2>
             </div>
             
             <form id="forgot-form" onsubmit="handleResetPassword(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Username</label>
-                    <input type="text" id="reset-username" required placeholder="Username ของคุณ" class="w-full bg-slate-900/50 border border-slate-600 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400">
+                    <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">Username</label>
+                    <input type="text" id="reset-username" required placeholder="Username ของคุณ" class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-amber-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">รหัสผ่านใหม่</label>
-                    <input type="password" id="reset-new-password" required placeholder="••••••••" class="w-full bg-slate-900/50 border border-slate-600 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400">
+                    <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">รหัสผ่านใหม่</label>
+                    <input type="password" id="reset-new-password" required placeholder="••••••••" class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-amber-500">
                 </div>
                 <div class="pt-2">
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">ยืนยันตัวตน (CAPTCHA)</label>
+                    <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">ยืนยันตัวตน (CAPTCHA)</label>
                     <div class="flex items-center gap-3 mb-2">
-                        <div id="captcha-display" class="captcha-text bg-slate-950 text-amber-400 font-mono text-2xl font-bold tracking-[0.3em] px-5 py-3 rounded-xl border border-slate-700 flex-grow text-center">XXXXXX</div>
-                        <button type="button" onclick="generateCaptcha()" class="bg-slate-700 hover:bg-slate-600 text-white p-3 rounded-xl">🔄</button>
+                        <div id="captcha-display" class="captcha-text bg-sky-50 text-amber-600 font-mono text-2xl font-bold tracking-[0.3em] px-5 py-3 rounded-xl border border-sky-200 flex-grow text-center">XXXXXX</div>
+                        <button type="button" onclick="generateCaptcha()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 p-3 rounded-xl transition-all">🔄</button>
                     </div>
-                    <input type="text" id="reset-captcha" required placeholder="พิมพ์ตัวอักขระด้านบน" class="w-full bg-slate-900/50 border border-slate-600 rounded-xl px-4 py-3 text-sm text-white text-center font-mono tracking-widest">
+                    <input type="text" id="reset-captcha" required placeholder="พิมพ์ตัวอักขระด้านบน" class="w-full bg-white/80 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 text-center font-mono tracking-widest">
                 </div>
                 <div class="pt-4 flex flex-col gap-3">
-                    <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-medium py-3.5 px-4 rounded-xl font-title">ยืนยันการเปลี่ยนรหัสผ่าน</button>
-                    <button type="button" onclick="showLoginPage()" class="w-full bg-transparent text-slate-400 hover:text-white text-sm py-2">← กลับไปหน้าเข้าสู่ระบบ</button>
+                    <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 text-white font-medium py-3.5 px-4 rounded-xl font-title shadow-md">ยืนยันการเปลี่ยนรหัสผ่าน</button>
+                    <button type="button" onclick="showLoginPage()" class="w-full bg-transparent text-slate-500 hover:text-slate-800 text-sm py-2">← กลับไปหน้าเข้าสู่ระบบ</button>
                 </div>
             </form>
         </div>
@@ -109,88 +111,88 @@
     <!-- ==================== 2. PAGE: MAIN DASHBOARD ==================== -->
     <div id="dashboard-page" class="hidden relative z-10 flex-grow p-4 md:p-8">
         <div class="max-w-7xl mx-auto space-y-8">
-            <div class="glass-panel p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-xl border-l-4 border-l-cyan-500">
+            <div class="glass-panel p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-xl border-l-4 border-l-cyan-500 border border-sky-100">
                 <div>
-                    <h1 class="text-2xl font-bold text-white font-title tracking-wide flex items-center gap-2">
+                    <h1 class="text-2xl font-bold text-slate-800 font-title tracking-wide flex items-center gap-2">
                         <span>📊</span> Enterprise User Journey Dashboard
                     </h1>
-                    <p class="text-xs text-slate-300 mt-1">อ้างอิงข้อมูลตารางล่าสุด (Persona: คุณกิตติ)</p>
+                    <p class="text-xs text-slate-500 mt-1">อ้างอิงข้อมูลตารางล่าสุด (Persona: คุณกิตติ)</p>
                 </div>
-                <button onclick="handleLogout()" class="self-start sm:self-auto bg-slate-800/80 hover:bg-rose-600 border border-slate-600 text-slate-200 hover:text-white px-5 py-2.5 text-sm font-medium rounded-xl transition-all font-title shadow-lg">
+                <button onclick="handleLogout()" class="self-start sm:self-auto bg-white hover:bg-rose-50 border border-slate-200 text-slate-700 hover:text-rose-600 px-5 py-2.5 text-sm font-medium rounded-xl transition-all font-title shadow-sm">
                     ออกจากระบบ 🚪
                 </button>
             </div>
 
             <!-- 5 Stages Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
-                <div onclick="openInteractiveModal(0)" class="group glass-panel hover:bg-slate-800/90 hover:border-cyan-400/50 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-2 shadow-lg flex flex-col justify-between min-h-[190px]">
+                <div onclick="openInteractiveModal(0)" class="group glass-panel hover:bg-white hover:border-cyan-400 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-2 shadow-lg flex flex-col justify-between min-h-[190px] border border-sky-100">
                     <div>
-                        <div class="flex items-center justify-between mb-4"><span class="text-4xl">🔍</span><span class="text-[10px] font-mono bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded-md font-bold">STEP 01</span></div>
-                        <h3 class="text-lg font-bold text-white font-title group-hover:text-cyan-400 transition-colors leading-tight">1. การรับรู้และการค้นหา</h3>
+                        <div class="flex items-center justify-between mb-4"><span class="text-4xl">🔍</span><span class="text-[10px] font-mono bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded-md font-bold">STEP 01</span></div>
+                        <h3 class="text-lg font-bold text-slate-800 font-title group-hover:text-cyan-600 transition-colors leading-tight">1. การรับรู้และการค้นหา</h3>
                         <p class="text-[10px] text-slate-400 mt-2 font-mono uppercase">Awareness & Research</p>
                     </div>
-                    <span class="text-xs text-cyan-400 font-medium font-title mt-4 flex items-center gap-1">ค้นหาแอร์ & อุปกรณ์ (50+) ➔</span>
+                    <span class="text-xs text-cyan-600 font-medium font-title mt-4 flex items-center gap-1">ค้นหาแอร์ & อุปกรณ์ (50+) ➔</span>
                 </div>
 
-                <div onclick="openInteractiveModal(1)" class="group glass-panel hover:bg-slate-800/90 hover:border-blue-400/50 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-2 shadow-lg flex flex-col justify-between min-h-[190px]">
+                <div onclick="openInteractiveModal(1)" class="group glass-panel hover:bg-white hover:border-blue-400 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-2 shadow-lg flex flex-col justify-between min-h-[190px] border border-sky-100">
                     <div>
-                        <div class="flex items-center justify-between mb-4"><span class="text-4xl">⚖️</span><span class="text-[10px] font-mono bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-md font-bold">STEP 02</span></div>
-                        <h3 class="text-lg font-bold text-white font-title group-hover:text-blue-400 transition-colors leading-tight">2. การพิจารณา</h3>
+                        <div class="flex items-center justify-between mb-4"><span class="text-4xl">⚖️</span><span class="text-[10px] font-mono bg-blue-100 text-blue-700 px-2 py-0.5 rounded-md font-bold">STEP 02</span></div>
+                        <h3 class="text-lg font-bold text-slate-800 font-title group-hover:text-blue-600 transition-colors leading-tight">2. การพิจารณา</h3>
                         <p class="text-[10px] text-slate-400 mt-2 font-mono uppercase">Consideration</p>
                     </div>
-                    <span class="text-xs text-blue-400 font-medium font-title mt-4 flex items-center gap-1">เปรียบเทียบสเปก & ราคา ➔</span>
+                    <span class="text-xs text-blue-600 font-medium font-title mt-4 flex items-center gap-1">เปรียบเทียบสเปก & ราคา ➔</span>
                 </div>
 
-                <div onclick="openInteractiveModal(2)" class="group glass-panel hover:bg-slate-800/90 hover:border-indigo-400/50 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-2 shadow-lg flex flex-col justify-between min-h-[190px]">
+                <div onclick="openInteractiveModal(2)" class="group glass-panel hover:bg-white hover:border-indigo-400 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-2 shadow-lg flex flex-col justify-between min-h-[190px] border border-sky-100">
                     <div>
-                        <div class="flex items-center justify-between mb-4"><span class="text-4xl">🛠️</span><span class="text-[10px] font-mono bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded-md font-bold">STEP 03</span></div>
-                        <h3 class="text-lg font-bold text-white font-title group-hover:text-indigo-400 transition-colors leading-tight">3. การซื้อและการติดตั้ง</h3>
+                        <div class="flex items-center justify-between mb-4"><span class="text-4xl">🛠️</span><span class="text-[10px] font-mono bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-md font-bold">STEP 03</span></div>
+                        <h3 class="text-lg font-bold text-slate-800 font-title group-hover:text-indigo-600 transition-colors leading-tight">3. การซื้อและการติดตั้ง</h3>
                         <p class="text-[10px] text-slate-400 mt-2 font-mono uppercase">Purchase & Install</p>
                     </div>
-                    <span class="text-xs text-indigo-400 font-medium font-title mt-4 flex items-center gap-1">ตะกร้า & ที่อยู่จัดส่งละเอียด ➔</span>
+                    <span class="text-xs text-indigo-600 font-medium font-title mt-4 flex items-center gap-1">ตะกร้า & ที่อยู่จัดส่งละเอียด ➔</span>
                 </div>
 
-                <div onclick="openInteractiveModal(3)" class="group glass-panel hover:bg-slate-800/90 hover:border-purple-400/50 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-2 shadow-lg flex flex-col justify-between min-h-[190px]">
+                <div onclick="openInteractiveModal(3)" class="group glass-panel hover:bg-white hover:border-purple-400 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-2 shadow-lg flex flex-col justify-between min-h-[190px] border border-sky-100">
                     <div>
-                        <div class="flex items-center justify-between mb-4"><span class="text-4xl">❄️</span><span class="text-[10px] font-mono bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-md font-bold">STEP 04</span></div>
-                        <h3 class="text-lg font-bold text-white font-title group-hover:text-purple-400 transition-colors leading-tight">4. การใช้งาน & บำรุงรักษา</h3>
+                        <div class="flex items-center justify-between mb-4"><span class="text-4xl">❄️</span><span class="text-[10px] font-mono bg-purple-100 text-purple-700 px-2 py-0.5 rounded-md font-bold">STEP 04</span></div>
+                        <h3 class="text-lg font-bold text-slate-800 font-title group-hover:text-purple-600 transition-colors leading-tight">4. การใช้งาน & บำรุงรักษา</h3>
                         <p class="text-[10px] text-slate-400 mt-2 font-mono uppercase">Usage & Maintenance</p>
                     </div>
-                    <span class="text-xs text-purple-400 font-medium font-title mt-4 flex items-center gap-1">จองคิว & ส่งเมลจริง ➔</span>
+                    <span class="text-xs text-purple-600 font-medium font-title mt-4 flex items-center gap-1">จองคิว & ส่งเมลจริง ➔</span>
                 </div>
 
-                <div onclick="openInteractiveModal(4)" class="group glass-panel hover:bg-slate-800/90 hover:border-pink-400/50 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-2 shadow-lg flex flex-col justify-between min-h-[190px]">
+                <div onclick="openInteractiveModal(4)" class="group glass-panel hover:bg-white hover:border-pink-400 rounded-2xl p-6 cursor-pointer transition-all duration-300 transform hover:-translate-y-2 shadow-lg flex flex-col justify-between min-h-[190px] border border-sky-100">
                     <div>
-                        <div class="flex items-center justify-between mb-4"><span class="text-4xl">❤️</span><span class="text-[10px] font-mono bg-pink-500/20 text-pink-300 px-2 py-0.5 rounded-md font-bold">STEP 05</span></div>
-                        <h3 class="text-lg font-bold text-white font-title group-hover:text-pink-400 transition-colors leading-tight">5. ความภักดี & บอกต่อ</h3>
+                        <div class="flex items-center justify-between mb-4"><span class="text-4xl">❤️</span><span class="text-[10px] font-mono bg-pink-100 text-pink-700 px-2 py-0.5 rounded-md font-bold">STEP 05</span></div>
+                        <h3 class="text-lg font-bold text-slate-800 font-title group-hover:text-pink-600 transition-colors leading-tight">5. ความภักดี & บอกต่อ</h3>
                         <p class="text-[10px] text-slate-400 mt-2 font-mono uppercase">Loyalty & Advocacy</p>
                     </div>
-                    <span class="text-xs text-pink-400 font-medium font-title mt-4 flex items-center gap-1">รีวิว & ให้ดาวลูกค้า (10+) ➔</span>
+                    <span class="text-xs text-pink-600 font-medium font-title mt-4 flex items-center gap-1">รีวิว & ให้ดาวลูกค้า (10+) ➔</span>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- ==================== 3. INTERACTIVE MODAL ==================== -->
-    <div id="detail-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 transition-all opacity-0">
-        <div class="bg-slate-900/95 border border-slate-600 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 transition-all duration-300">
-            <div class="p-6 md:p-8 border-b border-slate-700 flex items-start justify-between bg-slate-900/80 sticky top-0 backdrop-blur-lg z-20">
+    <div id="detail-modal" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 transition-all opacity-0">
+        <div class="bg-white border border-sky-100 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 transition-all duration-300 text-slate-700">
+            <div class="p-6 md:p-8 border-b border-slate-100 flex items-start justify-between bg-sky-50/50 sticky top-0 backdrop-blur-md z-20">
                 <div class="flex items-center gap-4">
                     <span id="modal-icon" class="text-4xl"></span>
                     <div>
-                        <h2 id="modal-title-th" class="text-2xl font-bold text-white font-title tracking-wide"></h2>
-                        <span id="modal-badge" class="inline-block mt-1 bg-cyan-500/20 text-cyan-300 text-[10px] px-2 py-0.5 rounded-md font-mono font-bold">INTERACTIVE SIMULATION</span>
+                        <h2 id="modal-title-th" class="text-2xl font-bold text-slate-800 font-title tracking-wide"></h2>
+                        <span id="modal-badge" class="inline-block mt-1 bg-cyan-100 text-cyan-700 text-[10px] px-2 py-0.5 rounded-md font-mono font-bold">INTERACTIVE SIMULATION</span>
                     </div>
                 </div>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-rose-400 bg-slate-800 p-2.5 rounded-xl transition-all">✕</button>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-rose-500 bg-white border border-slate-200 p-2.5 rounded-xl transition-all shadow-sm">✕</button>
             </div>
             <div id="modal-body-content" class="p-6 md:p-8 space-y-6"></div>
         </div>
     </div>
 
     <!-- ==================== 4. EMAIL SIMULATION POPUP MODAL ==================== -->
-    <div id="email-preview-modal" class="hidden fixed inset-0 z-[60] bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-purple-500/50 rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden transform transition-all">
+    <div id="email-preview-modal" class="hidden fixed inset-0 z-[60] bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white border border-purple-200 rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden transform transition-all text-slate-700">
             <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-4 text-white flex justify-between items-center">
                 <div class="flex items-center gap-2">
                     <span>📧</span>
@@ -198,96 +200,102 @@
                 </div>
                 <button onclick="closeEmailModal()" class="text-white hover:text-slate-200 text-sm">✕</button>
             </div>
-            <div class="p-6 space-y-4 text-sm text-slate-200">
-                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-2 text-xs">
-                    <p><strong>To (ผู้รับ):</strong> <span id="mail-to-target" class="text-cyan-300 font-mono"></span></p>
-                    <p><strong>From (ผู้ส่ง):</strong> <span class="text-purple-300 font-mono">service@hvacr-enterprise.com</span></p>
-                    <p><strong>Subject (หัวข้อ):</strong> <span class="text-amber-300">ยืนยันการจองคิวบริการเปลี่ยน/ล้างแอร์ (HVACR Portal)</span></p>
+            <div class="p-6 space-y-4 text-sm text-slate-600">
+                <div class="bg-sky-50/70 p-4 rounded-xl border border-sky-100 space-y-2 text-xs">
+                    <p><strong>To (ผู้รับ):</strong> <span id="mail-to-target" class="text-cyan-700 font-mono"></span></p>
+                    <p><strong>From (ผู้ส่ง):</strong> <span class="text-purple-700 font-mono">service@hvacr-enterprise.com</span></p>
+                    <p><strong>Subject (หัวข้อ):</strong> <span class="text-amber-700">ยืนยันการจองคิวบริการเปลี่ยน/ล้างแอร์ (HVACR Portal)</span></p>
                 </div>
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs leading-relaxed space-y-2">
-                    <p class="font-bold text-white">เรียน คุณลูกค้า,</p>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs leading-relaxed space-y-2">
+                    <p class="font-bold text-slate-800">เรียน คุณลูกค้า,</p>
                     <p>ระบบได้รับคำขอจองคิวบริการเปลี่ยน/ล้างแอร์ของคุณเรียบร้อยแล้ว รายละเอียดการนัดหมายมีดังนี้ครับ:</p>
-                    <div class="bg-slate-900 p-3 rounded-lg border border-purple-500/30 text-purple-200 font-mono">
-                        📅 วันที่นัดหมาย: <span id="mail-date-target" class="text-white font-bold"></span><br>
+                    <div class="bg-white p-3 rounded-lg border border-purple-200 text-purple-900 font-mono shadow-sm">
+                        📅 วันที่นัดหมาย: <span id="mail-date-target" class="text-slate-900 font-bold"></span><br>
                         🏢 สถานะ: นัดหมายสำเร็จ (รอช่างเข้าดำเนินการตามกำหนด)
                     </div>
                     <p class="text-slate-400 text-[11px] mt-2">อีเมลฉบับนี้ถูกส่งอัตโนมัติจากระบบจำลอง HVACR Enterprise User Journey</p>
                 </div>
-                <button onclick="closeEmailModal()" class="w-full bg-purple-600 hover:bg-purple-500 text-white py-3 rounded-xl font-title text-xs transition-all">ปิดหน้าต่างจดหมาย</button>
+                <button onclick="closeEmailModal()" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-title text-xs transition-all shadow-md">ปิดหน้าต่างจดหมาย</button>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="relative z-10 text-center p-5 text-[11px] text-slate-500 border-t border-slate-800 bg-slate-950/40">
+    <footer class="relative z-10 text-center p-5 text-[11px] text-slate-400 border-t border-sky-100 bg-white/40">
         Enterprise User Journey Mapping Platform • Confidential Dashboard Data
     </footer>
 
     <!-- ==================== JAVASCRIPT SYSTEM ==================== -->
     <script>
-        // --- 1. ข้อมูลแคตตาล็อกสินค้า (พร้อมรูปภาพจริงตรงตามหมวดหมู่) ---
+        // --- 1. ข้อมูลแคตตาล็อกสินค้า 52 รายการ ---
         const catalogItems = [
-            { id: 1, name: "แอร์ผนัง Inverter (9,000 BTU) ประหยัดไฟเบอร์ 5", category: "แอร์ติดผนัง", price: 12900, img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=300&auto=format&fit=crop" },
-            { id: 2, name: "แอร์ผนัง Inverter (12,000 BTU) รุ่นยอดนิยม", category: "แอร์ติดผนัง", price: 15900, img: "https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=300&auto=format&fit=crop" },
-            { id: 3, name: "แอร์ผนัง Inverter (15,000 BTU) เย็นเร็วทันใจ", category: "แอร์ติดผนัง", price: 18900, img: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?q=80&w=300&auto=format&fit=crop" },
-            { id: 4, name: "แอร์ผนัง Inverter (18,000 BTU) สำหรับห้องกว้าง", category: "แอร์ติดผนัง", price: 22500, img: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=300&auto=format&fit=crop" },
-            { id: 5, name: "แอร์ผนัง Inverter (24,000 BTU) ขนาดใหญ่พิเศษ", category: "แอร์ติดผนัง", price: 29500, img: "https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=300&auto=format&fit=crop" },
-            { id: 6, name: "แอร์ผนัง Fixed Speed (9,000 BTU)", category: "แอร์ติดผนัง", price: 9900, img: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?q=80&w=300&auto=format&fit=crop" },
-            { id: 7, name: "แอร์ผนัง Fixed Speed (12,000 BTU)", category: "แอร์ติดผนัง", price: 11900, img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=300&auto=format&fit=crop" },
-            { id: 8, name: "แอร์ผนัง Fixed Speed (18,000 BTU)", category: "แอร์ติดผนัง", price: 16900, img: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=300&auto=format&fit=crop" },
-            { id: 9, name: "แอร์ผนัง Fixed Speed (24,000 BTU)", category: "แอร์ติดผนัง", price: 23900, img: "https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=300&auto=format&fit=crop" },
-            { id: 10, name: "แอร์เคลื่อนที่ Portable (9,000 BTU)", category: "แอร์ติดผนัง", price: 7900, img: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?q=80&w=300&auto=format&fit=crop" },
-            { id: 11, name: "แอร์แขวนใต้ฝ้าเพดาน (18,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 24000, img: "https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=300&auto=format&fit=crop" },
-            { id: 12, name: "แอร์แขวนใต้ฝ้าเพดาน (24,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 29000, img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=300&auto=format&fit=crop" },
-            { id: 13, name: "แอร์แขวนใต้ฝ้าเพดาน (30,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 34000, img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=300&auto=format&fit=crop" },
-            { id: 14, name: "แอร์แขวนใต้ฝ้าเพดาน (36,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 41000, img: "https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=300&auto=format&fit=crop" },
-            { id: 15, name: "แอร์ตั้งพื้นเชิงพาณิชย์ (30,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 32000, img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=300&auto=format&fit=crop" },
-            { id: 16, name: "แอร์ตั้งพื้นเชิงพาณิชย์ (36,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 38500, img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=300&auto=format&fit=crop" },
-            { id: 17, name: "แอร์ตั้งพื้นเชิงพาณิชย์ (40,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 44000, img: "https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=300&auto=format&fit=crop" },
-            { id: 18, name: "แอร์สี่ทิศทาง Cassette Type (18,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 28000, img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=300&auto=format&fit=crop" },
-            { id: 19, name: "แอร์สี่ทิศทาง Cassette Type (24,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 35000, img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=300&auto=format&fit=crop" },
-            { id: 20, name: "แอร์สี่ทิศทาง Cassette Type (30,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 42000, img: "https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=300&auto=format&fit=crop" },
-            { id: 21, name: "แอร์สี่ทิศทาง Cassette Type (36,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 48000, img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=300&auto=format&fit=crop" },
-            { id: 22, name: "แอร์สี่ทิศทาง Cassette Type (48,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 55000, img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=300&auto=format&fit=crop" },
-            { id: 23, name: "ท่อน้ำยาแอร์สำเร็จรูปพร้อมฉนวน (ความยาว 4 เมตร)", category: "อุปกรณ์/อะไหล่", price: 1250, img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=300&auto=format&fit=crop" },
-            { id: 24, name: "ท่อน้ำยาแอร์สำเร็จรูปพร้อมฉนวน (ความยาว 6 เมตร)", category: "อุปกรณ์/อะไหล่", price: 1850, img: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=300&auto=format&fit=crop" },
-            { id: 25, name: "ท่อน้ำยาแอร์สำเร็จรูปพร้อมฉนวน (ความยาว 10 เมตร)", category: "อุปกรณ์/อะไหล่", price: 2950, img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=300&auto=format&fit=crop" },
-            { id: 26, name: "เบรกเกอร์กันดูดสำหรับแอร์ (15A)", category: "อุปกรณ์/อะไหล่", price: 380, img: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=300&auto=format&fit=crop" },
-            { id: 27, name: "เบรกเกอร์กันดูดสำหรับแอร์ (20A)", category: "อุปกรณ์/อะไหล่", price: 420, img: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=300&auto=format&fit=crop" },
-            { id: 28, name: "เบรกเกอร์กันดูดสำหรับแอร์ (30A)", category: "อุปกรณ์/อะไหล่", price: 450, img: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=300&auto=format&fit=crop" },
-            { id: 29, name: "ขาแขวนคอมเพรสเซอร์แอร์เหล็กหนาพิเศษ", category: "อุปกรณ์/อะไหล่", price: 350, img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=300&auto=format&fit=crop" },
-            { id: 30, name: "ขาแขวนคอมเพรสเซอร์แอร์แบบกระเช้า", category: "อุปกรณ์/อะไหล่", price: 650, img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=300&auto=format&fit=crop" },
-            { id: 31, name: "เซ็นเซอร์วัดอุณหภูมิห้อง IoT (Smart HVAC)", category: "อุปกรณ์/อะไหล่", price: 890, img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=300&auto=format&fit=crop" },
-            { id: 32, name: "เซ็นเซอร์วัดความชื้นและ CO2 (Smart Sensor)", category: "อุปกรณ์/อะไหล่", price: 1590, img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=300&auto=format&fit=crop" },
-            { id: 33, name: "Smart Thermostat ควบคุมแอร์ผ่าน Wi-Fi", category: "อุปกรณ์/อะไหล่", price: 2290, img: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=300&auto=format&fit=crop" },
-            { id: 34, name: "น้ำยาแอร์ R32 แท้ (ถัง 10 กิโลกรัม)", category: "น้ำยา/เคมีภัณฑ์", price: 2400, img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=300&auto=format&fit=crop" },
-            { id: 35, name: "น้ำยาแอร์ R410A (ถัง 11.3 กิโลกรัม)", category: "น้ำยา/เคมีภัณฑ์", price: 2800, img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=300&auto=format&fit=crop" },
-            { id: 36, name: "น้ำยาแอร์ R22 (ถัง 13.6 กิโลกรัม)", category: "น้ำยา/เคมีภัณฑ์", price: 3500, img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=300&auto=format&fit=crop" },
-            { id: 37, name: "รีโมทคอนโทรลแอร์สากลหน้าจอ LCD", category: "อุปกรณ์/อะไหล่", price: 290, img: "https://images.unsplash.com/photo-1526738549149-8e07eca6c147?q=80&w=300&auto=format&fit=crop" },
-            { id: 38, name: "ปั๊มน้ำทิ้งแอร์อัตโนมัติ (Mini Condensate Pump)", category: "อุปกรณ์/อะไหล่", price: 1450, img: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=300&auto=format&fit=crop" },
-            { id: 39, name: "ยางรองขาตั้งคอมเพรสเซอร์แอร์ (ชุด 4 ชิ้น)", category: "อุปกรณ์/อะไหล่", price: 120, img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=300&auto=format&fit=crop" },
-            { id: 40, name: "เทปพันท่อแอร์แบบมีกาว (ม้วนใหญ่)", category: "อุปกรณ์/อะไหล่", price: 65, img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=300&auto=format&fit=crop" },
-            { id: 41, name: "เทปพันท่อแอร์แบบไม่มีกาว", category: "อุปกรณ์/อะไหล่", price: 45, img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=300&auto=format&fit=crop" },
-            { id: 42, name: "ฉนวนหุ้มท่อน้ำยาแอร์ Armaflex (หนา 3/8 นิ้ว)", category: "อุปกรณ์/อะไหล่", price: 320, img: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=300&auto=format&fit=crop" },
-            { id: 43, name: "ฉนวนหุ้มท่อน้ำยาแอร์ Armaflex (หนา 1/2 นิ้ว)", category: "อุปกรณ์/อะไหล่", price: 390, img: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=300&auto=format&fit=crop" },
-            { id: 44, name: "หน้ากากแอร์สี่ทิศทางพร้อมรีโมทไร้สาย", category: "อุปกรณ์/อะไหล่", price: 3200, img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=300&auto=format&fit=crop" },
-            { id: 45, name: "แผ่นกรองอากาศคาร์บอนกำจัดกลิ่นแอร์ (แพ็ก 2 ชิ้น)", category: "อุปกรณ์/อะไหล่", price: 190, img: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?q=80&w=300&auto=format&fit=crop" },
-            { id: 46, name: "มอเตอร์พัดลมคอยล์เย็นแอร์ติดผนัง", category: "อะไหล่เครื่อง", price: 1200, img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=300&auto=format&fit=crop" },
-            { id: 47, name: "มอเตอร์พัดลมคอยล์ร้อนแอร์ภายนอก", category: "อะไหล่เครื่อง", price: 1850, img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=300&auto=format&fit=crop" },
-            { id: 48, name: "คาปาซิเตอร์รันคอมเพรสเซอร์แอร์ (35 uF)", category: "อะไหล่เครื่อง", price: 250, img: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=300&auto=format&fit=crop" },
-            { id: 49, name: "คาปาซิเตอร์รันคอมเพรสเซอร์แอร์ (50 uF)", category: "อะไหล่เครื่อง", price: 320, img: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=300&auto=format&fit=crop" },
-            { id: 50, name: "ถุงผ้าใบสำหรับล้างแอร์ติดผนังพร้อมท่อน้ำทิ้ง", category: "เครื่องมือช่าง", price: 450, img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=300&auto=format&fit=crop" },
-            { id: 51, name: "ชุดประแจขันแฟลร์นัทท่อน้ำยาแอร์", category: "เครื่องมือช่าง", price: 850, img: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=300&auto=format&fit=crop" },
-            { id: 52, name: "เกจวัดน้ำยาแอร์ (Manifold Gauge Set)", category: "เครื่องมือช่าง", price: 1290, img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=300&auto=format&fit=crop" }
+            { id: 1, name: "แอร์ผนัง Inverter (9,000 BTU) ประหยัดไฟเบอร์ 5", category: "แอร์ติดผนัง", price: 12900, icon: "🌬️" },
+            { id: 2, name: "แอร์ผนัง Inverter (12,000 BTU) รุ่นยอดนิยม", category: "แอร์ติดผนัง", price: 15900, icon: "🌬️" },
+            { id: 3, name: "แอร์ผนัง Inverter (15,000 BTU) เย็นเร็วทันใจ", category: "แอร์ติดผนัง", price: 18900, icon: "🌬️" },
+            { id: 4, name: "แอร์ผนัง Inverter (18,000 BTU) สำหรับห้องกว้าง", category: "แอร์ติดผนัง", price: 22500, icon: "🌬️" },
+            { id: 5, name: "แอร์ผนัง Inverter (24,000 BTU) ขนาดใหญ่พิเศษ", category: "แอร์ติดผนัง", price: 29500, icon: "🌬️" },
+            { id: 6, name: "แอร์ผนัง Fixed Speed (9,000 BTU)", category: "แอร์ติดผนัง", price: 9900, icon: "🌬️" },
+            { id: 7, name: "แอร์ผนัง Fixed Speed (12,000 BTU)", category: "แอร์ติดผนัง", price: 11900, icon: "🌬️" },
+            { id: 8, name: "แอร์ผนัง Fixed Speed (18,000 BTU)", category: "แอร์ติดผนัง", price: 16900, icon: "🌬️" },
+            { id: 9, name: "แอร์ผนัง Fixed Speed (24,000 BTU)", category: "แอร์ติดผนัง", price: 23900, icon: "🌬️" },
+            { id: 10, name: "แอร์เคลื่อนที่ Portable (9,000 BTU)", category: "แอร์ติดผนัง", price: 7900, icon: "🌬️" },
+            { id: 11, name: "แอร์แขวนใต้ฝ้าเพดาน (18,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 24000, icon: "🏢" },
+            { id: 12, name: "แอร์แขวนใต้ฝ้าเพดาน (24,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 29000, icon: "🏢" },
+            { id: 13, name: "แอร์แขวนใต้ฝ้าเพดาน (30,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 34000, icon: "🏢" },
+            { id: 14, name: "แอร์แขวนใต้ฝ้าเพดาน (36,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 41000, icon: "🏢" },
+            { id: 15, name: "แอร์ตั้งพื้นเชิงพาณิชย์ (30,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 32000, icon: "🏢" },
+            { id: 16, name: "แอร์ตั้งพื้นเชิงพาณิชย์ (36,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 38500, icon: "🏢" },
+            { id: 17, name: "แอร์ตั้งพื้นเชิงพาณิชย์ (40,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 44000, icon: "🏢" },
+            { id: 18, name: "แอร์สี่ทิศทาง Cassette Type (18,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 28000, icon: "🏢" },
+            { id: 19, name: "แอร์สี่ทิศทาง Cassette Type (24,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 35000, icon: "🏢" },
+            { id: 20, name: "แอร์สี่ทิศทาง Cassette Type (30,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 42000, icon: "🏢" },
+            { id: 21, name: "แอร์สี่ทิศทาง Cassette Type (36,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 48000, icon: "🏢" },
+            { id: 22, name: "แอร์สี่ทิศทาง Cassette Type (48,000 BTU)", category: "แอร์เชิงพาณิชย์", price: 55000, icon: "🏢" },
+            { id: 23, name: "ท่อน้ำยาแอร์สำเร็จรูปพร้อมฉนวน (4 เมตร)", category: "อุปกรณ์/อะไหล่", price: 1250, icon: "〰️" },
+            { id: 24, name: "ท่อน้ำยาแอร์สำเร็จรูปพร้อมฉนวน (6 เมตร)", category: "อุปกรณ์/อะไหล่", price: 1850, icon: "〰️" },
+            { id: 25, name: "ท่อน้ำยาแอร์สำเร็จรูปพร้อมฉนวน (10 เมตร)", category: "อุปกรณ์/อะไหล่", price: 2950, icon: "〰️" },
+            { id: 26, name: "เบรกเกอร์กันดูดสำหรับแอร์ (15A)", category: "อุปกรณ์/อะไหล่", price: 380, icon: "⚡" },
+            { id: 27, name: "เบรกเกอร์กันดูดสำหรับแอร์ (20A)", category: "อุปกรณ์/อะไหล่", price: 420, icon: "⚡" },
+            { id: 28, name: "เบรกเกอร์กันดูดสำหรับแอร์ (30A)", category: "อุปกรณ์/อะไหล่", price: 450, icon: "⚡" },
+            { id: 29, name: "ขาแขวนคอมเพรสเซอร์แอร์เหล็กหนาพิเศษ", category: "อุปกรณ์/อะไหล่", price: 350, icon: "〰️" },
+            { id: 30, name: "ขาแขวนคอมเพรสเซอร์แอร์แบบกระเช้า", category: "อุปกรณ์/อะไหล่", price: 650, icon: "〰️" },
+            { id: 31, name: "เซ็นเซอร์วัดอุณหภูมิห้อง IoT (Smart HVAC)", category: "อุปกรณ์/อะไหล่", price: 890, icon: "📡" },
+            { id: 32, name: "เซ็นเซอร์วัดความชื้นและ CO2 (Smart Sensor)", category: "อุปกรณ์/อะไหล่", price: 1590, icon: "📡" },
+            { id: 33, name: "Smart Thermostat ควบคุมแอร์ผ่าน Wi-Fi", category: "อุปกรณ์/อะไหล่", price: 2290, icon: "📡" },
+            { id: 34, name: "น้ำยาแอร์ R32 แท้ (ถัง 10 กิโลกรัม)", category: "น้ำยา/เคมีภัณฑ์", price: 2400, icon: "🛢️" },
+            { id: 35, name: "น้ำยาแอร์ R410A (ถัง 11.3 กิโลกรัม)", category: "น้ำยา/เคมีภัณฑ์", price: 2800, icon: "🛢️" },
+            { id: 36, name: "น้ำยาแอร์ R22 (ถัง 13.6 กิโลกรัม)", category: "น้ำยา/เคมีภัณฑ์", price: 3500, icon: "🛢️" },
+            { id: 37, name: "รีโมทคอนโทรลแอร์สากลหน้าจอ LCD", category: "อุปกรณ์/อะไหล่", price: 290, icon: "📡" },
+            { id: 38, name: "ปั๊มน้ำทิ้งแอร์อัตโนมัติ (Mini Condensate Pump)", category: "อุปกรณ์/อะไหล่", price: 1450, icon: "⚙️" },
+            { id: 39, name: "ยางรองขาตั้งคอมเพรสเซอร์แอร์ (ชุด 4 ชิ้น)", category: "อุปกรณ์/อะไหล่", price: 120, icon: "〰️" },
+            { id: 40, name: "เทปพันท่อแอร์แบบมีกาว (ม้วนใหญ่)", category: "อุปกรณ์/อะไหล่", price: 65, icon: "〰️" },
+            { id: 41, name: "เทปพันท่อแอร์แบบไม่มีกาว", category: "อุปกรณ์/อะไหล่", price: 45, icon: "〰️" },
+            { id: 42, name: "ฉนวนหุ้มท่อน้ำยาแอร์ Armaflex (หนา 3/8 นิ้ว)", category: "อุปกรณ์/อะไหล่", price: 320, icon: "〰️" },
+            { id: 43, name: "ฉนวนหุ้มท่อน้ำยาแอร์ Armaflex (หนา 1/2 นิ้ว)", category: "อุปกรณ์/อะไหล่", price: 390, icon: "〰️" },
+            { id: 44, name: "หน้ากากแอร์สี่ทิศทางพร้อมรีโมทไร้สาย", category: "อุปกรณ์/อะไหล่", price: 3200, icon: "🏢" },
+            { id: 45, name: "แผ่นกรองอากาศคาร์บอนกำจัดกลิ่นแอร์ (แพ็ก 2 ชิ้น)", category: "อุปกรณ์/อะไหล่", price: 190, icon: "🌬️" },
+            { id: 46, name: "มอเตอร์พัดลมคอยล์เย็นแอร์ติดผนัง", category: "อะไหล่เครื่อง", price: 1200, icon: "⚙️" },
+            { id: 47, name: "มอเตอร์พัดลมคอยล์ร้อนแอร์ภายนอก", category: "อะไหล่เครื่อง", price: 1850, icon: "⚙️" },
+            { id: 48, name: "คาปาซิเตอร์รันคอมเพรสเซอร์แอร์ (35 uF)", category: "อะไหล่เครื่อง", price: 250, icon: "⚙️" },
+            { id: 49, name: "คาปาซิเตอร์รันคอมเพรสเซอร์แอร์ (50 uF)", category: "อะไหล่เครื่อง", price: 320, icon: "⚙️" },
+            { id: 50, name: "ถุงผ้าใบสำหรับล้างแอร์ติดผนังพร้อมท่อน้ำทิ้ง", category: "เครื่องมือช่าง", price: 450, icon: "🛠️" },
+            { id: 51, name: "ชุดประแจขันแฟลร์นัทท่อน้ำยาแอร์", category: "เครื่องมือช่าง", price: 850, icon: "🛠️" },
+            { id: 52, name: "เกจวัดน้ำยาแอร์ (Manifold Gauge Set)", category: "เครื่องมือช่าง", price: 1290, icon: "🛠️" }
         ];
 
         // --- ข้อมูลเปรียบเทียบ (Step 2) ---
         const comparisonData = [
-            { model: "Inverter Pro 9,000 BTU", btu: "9,000", price: "฿12,900", install: "ฟรี", warranty: "5 ปี" },
-            { model: "Inverter Pro 12,000 BTU", btu: "12,000", price: "฿15,900", install: "ฟรี", warranty: "5 ปี" },
-            { model: "Inverter Pro 18,000 BTU", btu: "18,000", price: "฿22,500", install: "ฟรี", warranty: "5 ปี" },
+            { model: "ล้างแอร์ติดผนัง (9k-18k BTU)", btu: "N/A", price: "฿600-800", install: "N/A", warranty: "30 วัน" },
+            { model: "ล้างแอร์เชิงพาณิชย์ (ฝังฝ้า)", btu: "N/A", price: "฿1,000-1,500", install: "N/A", warranty: "30 วัน" },
+            { model: "ซ่อมแอร์รั่ว (เชื่อมท่อ)", btu: "9k-13k", price: "฿3,500-4,500", install: "N/A", warranty: "90 วัน" },
+            { model: "เติมน้ำยาแอร์ (R32/R410A)", btu: "ทุกขนาด", price: "฿1,600-2,200", install: "N/A", warranty: "30 วัน" },
+            { model: "เปลี่ยนคาปาซิเตอร์คอมฯ", btu: "ทั่วไป", price: "฿800-1,500", install: "N/A", warranty: "30 วัน" },
+            { model: "Inverter Pro 9,000 BTU (ใหม่)", btu: "9,000", price: "฿12,900", install: "ฟรี", warranty: "5 ปี" },
+            { model: "Inverter Pro 12,000 BTU (ใหม่)", btu: "12,000", price: "฿15,900", install: "ฟรี", warranty: "5 ปี" },
+            { model: "Inverter Pro 18,000 BTU (ใหม่)", btu: "18,000", price: "฿22,500", install: "ฟรี", warranty: "5 ปี" },
             { model: "Commercial Multi V 36,000 BTU", btu: "36,000", price: "฿38,500", install: "ฟรี", warranty: "5 ปี" },
-            { model: "Cassette Type 48,000 BTU", btu: "48,000", price: "฿55,000", install: "ฟรี", warranty: "5 ปี" }
+            { model: "Cassette Type 48,000 BTU", btu: "48,000", price: "฿55,000", install: "ฟรี", warranty: "5 ปี" },
+            { model: "ติดตั้งแอร์ใหม่ (มาตรฐาน)", btu: "ทุกขนาด", price: "฿4,500-5,500", install: "ฟรี", warranty: "1 ปี" }
         ];
 
         let cart = [];
@@ -398,9 +406,9 @@
                 titleEl.textContent = "1. การรับรู้และการค้นหา (Catalog & Search Engine 50+ Items)";
                 bodyContent.innerHTML = `
                     <div class="space-y-4">
-                        <p class="text-sm text-slate-300">ค้นหารายการเครื่องปรับอากาศ หรืออุปกรณ์ติดตั้ง (แสดงมากกว่า 50 รายการ พร้อมรูปภาพสินค้าจริง):</p>
-                        <input type="text" id="search-input" onkeyup="filterCatalog()" placeholder="พิมพ์ค้นหา เช่น แอร์, ท่อน้ำยา, น้ำยาแอร์, เบรกเกอร์..." class="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400">
-                        <div id="catalog-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 max-h-[450px] overflow-y-auto pr-2"></div>
+                        <p class="text-sm text-slate-600">ค้นหารายการเครื่องปรับอากาศ หรืออุปกรณ์ติดตั้ง (มีมากกว่า 50 รายการ):</p>
+                        <input type="text" id="search-input" onkeyup="filterCatalog()" placeholder="พิมพ์ค้นหา เช่น แอร์, ท่อน้ำยา, น้ำยาแอร์, เบรกเกอร์..." class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-cyan-500 shadow-sm">
+                        <div id="catalog-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 max-h-[400px] overflow-y-auto pr-2"></div>
                     </div>
                 `;
                 renderCatalog(catalogItems);
@@ -409,26 +417,26 @@
                 iconEl.textContent = "⚖️";
                 titleEl.textContent = "2. การพิจารณาเปรียบเทียบ (Consideration & Quotation)";
                 let compRows = comparisonData.map(c => `
-                    <tr class="border-b border-slate-700/50">
-                        <td class="py-3 font-semibold text-white">${c.model}</td>
-                        <td class="text-slate-300">${c.btu}</td>
-                        <td class="text-cyan-400 font-bold">${c.price}</td>
-                        <td class="text-emerald-400">${c.install}</td>
-                        <td class="text-slate-300">${c.warranty}</td>
+                    <tr class="border-b border-slate-100 hover:bg-sky-50/50 transition-colors">
+                        <td class="py-3 font-semibold text-slate-800 text-xs">${c.model}</td>
+                        <td class="text-slate-600 text-xs">${c.btu}</td>
+                        <td class="text-cyan-600 font-bold text-xs">${c.price}</td>
+                        <td class="text-emerald-600 text-xs">${c.install}</td>
+                        <td class="text-slate-600 text-xs">${c.warranty}</td>
                     </tr>
                 `).join('');
 
                 bodyContent.innerHTML = `
-                    <div class="space-y-4 text-slate-200 text-sm leading-relaxed">
-                        <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
-                            <h4 class="font-bold text-blue-400 font-title mb-2">📋 ตารางเปรียบเทียบสเปกและราคาแอร์ทุกประเภท</h4>
-                            <table class="w-full text-left border-collapse mt-3 text-xs md:text-sm">
-                                <tr class="border-b border-slate-700 text-slate-400 text-xs">
-                                    <th class="py-2">รุ่นเครื่องปรับอากาศ</th>
+                    <div class="space-y-4 text-slate-700 text-sm leading-relaxed">
+                        <div class="bg-sky-50/40 p-5 rounded-2xl border border-sky-100 overflow-x-auto shadow-sm">
+                            <h4 class="font-bold text-blue-600 font-title mb-2">📋 ตารางเปรียบเทียบค่าบริการและราคาเครื่องปรับอากาศ</h4>
+                            <table class="w-full text-left border-collapse mt-3">
+                                <tr class="border-b border-slate-200 text-slate-500 text-xs uppercase">
+                                    <th class="py-2">รายการ/รุ่น</th>
                                     <th class="py-2">BTU</th>
-                                    <th class="py-2">ราคาจำหน่าย</th>
+                                    <th class="py-2">ราคา</th>
                                     <th class="py-2">ค่าติดตั้ง</th>
-                                    <th class="py-2">รับประกันคอม</th>
+                                    <th class="py-2">ประกันงาน</th>
                                 </tr>
                                 ${compRows}
                             </table>
@@ -446,21 +454,21 @@
                 titleEl.textContent = "4. การใช้งาน & บำรุงรักษา (Calendar Booking 6 Months & Email Simulation)";
                 bodyContent.innerHTML = `
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 space-y-3">
-                            <h4 class="text-sm font-bold text-purple-400 mb-2">⚡ สถานะการทำงานแอร์ (IoT Status)</h4>
-                            <p class="text-xs text-slate-300">อุณหภูมิห้องปัจจุบัน: <span class="text-cyan-300 font-bold">25°C</span></p>
-                            <p class="text-xs text-slate-300">สถานะคอมเพรสเซอร์: <span class="text-emerald-400 font-bold">ทำงานปกติ (Normal)</span></p>
-                            <p class="text-xs text-slate-300">ค่าไฟฟ้าโดยประมาณเดือนนี้: <span class="text-amber-300 font-bold">1,250 บาท</span></p>
+                        <div class="bg-sky-50/40 p-5 rounded-2xl border border-sky-100 space-y-3 shadow-sm">
+                            <h4 class="text-sm font-bold text-purple-600 mb-2">⚡ สถานะการทำงานแอร์ (IoT Status)</h4>
+                            <p class="text-xs text-slate-600">อุณหภูมิห้องปัจจุบัน: <span class="text-cyan-600 font-bold">25°C</span></p>
+                            <p class="text-xs text-slate-600">สถานะคอมเพรสเซอร์: <span class="text-emerald-600 font-bold">ทำงานปกติ (Normal)</span></p>
+                            <p class="text-xs text-slate-600">ค่าไฟฟ้าโดยประมาณเดือนนี้: <span class="text-amber-600 font-bold">1,250 บาท</span></p>
                         </div>
-                        <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 space-y-3">
-                            <h4 class="text-sm font-bold text-purple-400 mb-2">📅 ระบบจองคิวเปลี่ยน/ล้างแอร์ (ล่วงหน้า 6 เดือน)</h4>
-                            <label class="block text-xs text-slate-300">เลือกวันที่ต้องการให้ช่างเข้าบริการ:</label>
-                            <input type="date" id="booking-date" class="w-full bg-slate-900 border border-slate-600 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-400 cursor-pointer">
+                        <div class="bg-sky-50/40 p-5 rounded-2xl border border-sky-100 space-y-3 shadow-sm">
+                            <h4 class="text-sm font-bold text-purple-600 mb-2">📅 ระบบจองคิวเปลี่ยน/ล้างแอร์ (ล่วงหน้า 6 เดือน)</h4>
+                            <label class="block text-xs text-slate-600">เลือกวันที่ต้องการให้ช่างเข้าบริการ:</label>
+                            <input type="date" id="booking-date" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-purple-500 cursor-pointer shadow-sm">
                             
-                            <label class="block text-xs text-slate-300 mt-2">อีเมลผู้รับการแจ้งเตือน:</label>
-                            <input type="email" id="booking-email" placeholder="67160320@go.buu.ac.th" class="w-full bg-slate-900 border border-slate-600 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-400">
+                            <label class="block text-xs text-slate-600 mt-2">อีเมลผู้รับการแจ้งเตือน:</label>
+                            <input type="email" id="booking-email" placeholder="67160320@go.buu.ac.th" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-purple-500 shadow-sm">
                             
-                            <button onclick="confirmBookingWithEmail()" id="btn-send-email" class="w-full bg-purple-600 hover:bg-purple-500 text-white text-xs py-2.5 rounded-xl transition-all font-title mt-2 flex justify-center items-center gap-2">
+                            <button onclick="confirmBookingWithEmail()" id="btn-send-email" class="w-full bg-purple-600 hover:bg-purple-700 text-white text-xs py-2.5 rounded-xl transition-all font-title mt-2 flex justify-center items-center gap-2 shadow-md">
                                 ยืนยันการจองและส่งเมลจริง
                             </button>
                         </div>
@@ -494,21 +502,23 @@
             }, 10);
         }
 
-        // --- ฟังก์ชันแสดงแคตตาล็อกสินค้าพร้อมรูปภาพจริง ---
+        // --- ฟังก์ชันแสดงแคตตาล็อกสินค้าพร้อมอิโมจิ ---
         function renderCatalog(items) {
             const listEl = document.getElementById('catalog-list');
             if(!listEl) return;
             listEl.innerHTML = items.map(item => `
-                <div class="bg-slate-800/60 border border-slate-700 p-3 rounded-2xl flex items-center justify-between gap-3 shadow-md hover:border-cyan-500/50 transition-all">
+                <div class="bg-white/80 border border-slate-200 p-3 rounded-2xl flex items-center justify-between gap-3 shadow-sm hover:border-cyan-400 hover:shadow-md transition-all">
                     <div class="flex items-center gap-3">
-                        <img src="${item.img}" alt="${item.name}" class="w-14 h-14 object-cover rounded-xl border border-slate-600 shadow-sm shrink-0">
+                        <div class="w-12 h-12 bg-sky-50 rounded-xl border border-sky-100 flex items-center justify-center text-2xl shrink-0 shadow-inner">
+                            ${item.icon}
+                        </div>
                         <div>
-                            <h5 class="text-xs font-bold text-white line-clamp-1">${item.name}</h5>
-                            <span class="text-[9px] bg-slate-700/80 text-cyan-300 px-1.5 py-0.5 rounded">${item.category}</span>
-                            <p class="text-xs text-cyan-400 font-bold mt-1">฿${item.price.toLocaleString()}</p>
+                            <h5 class="text-xs font-bold text-slate-800 line-clamp-1">${item.name}</h5>
+                            <span class="text-[9px] bg-sky-100 text-cyan-800 px-1.5 py-0.5 rounded">${item.category}</span>
+                            <p class="text-xs text-cyan-600 font-bold mt-1">฿${item.price.toLocaleString()}</p>
                         </div>
                     </div>
-                    <button onclick="addToCart(${item.id})" class="bg-cyan-600 hover:bg-cyan-500 text-white text-[11px] px-3 py-2 rounded-xl transition-all shrink-0 font-medium">ใส่ตะกร้า</button>
+                    <button onclick="addToCart(${item.id})" class="bg-cyan-600 hover:bg-cyan-700 text-white text-[11px] px-3 py-2 rounded-xl transition-all shrink-0 font-medium shadow-sm">ใส่ตะกร้า</button>
                 </div>
             `).join('');
         }
@@ -532,14 +542,14 @@
             let cartHtml = cart.length === 0 
                 ? `<p class="text-slate-400 text-xs italic">ยังไม่มีสินค้าในตะกร้า (ลองไปเลือกสินค้าได้ที่ Step 1)</p>`
                 : cart.map((item, idx) => `
-                    <div class="flex justify-between items-center bg-slate-800/40 p-2.5 rounded-xl text-xs gap-2">
+                    <div class="flex justify-between items-center bg-sky-50/50 p-2.5 rounded-xl text-xs gap-2 border border-sky-100">
                         <div class="flex items-center gap-2">
-                            <img src="${item.img}" class="w-8 h-8 object-cover rounded-lg border border-slate-700">
-                            <span class="line-clamp-1">${item.name}</span>
+                            <span class="text-lg">${item.icon}</span>
+                            <span class="line-clamp-1 text-slate-800">${item.name}</span>
                         </div>
                         <div class="flex items-center gap-3 shrink-0">
-                            <span class="text-cyan-400 font-bold">฿${item.price.toLocaleString()}</span>
-                            <button onclick="removeFromCart(${idx})" class="text-rose-400 hover:text-rose-300">ลบ</button>
+                            <span class="text-cyan-600 font-bold">฿${item.price.toLocaleString()}</span>
+                            <button onclick="removeFromCart(${idx})" class="text-rose-500 hover:text-rose-700 font-medium">ลบ</button>
                         </div>
                     </div>
                   `).join('');
@@ -547,30 +557,30 @@
             bodyContent.innerHTML = `
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-4">
-                        <h4 class="text-sm font-bold text-indigo-400 font-title">🛒 ตะกร้าสินค้าของคุณ</h4>
+                        <h4 class="text-sm font-bold text-indigo-600 font-title">🛒 ตะกร้าสินค้าของคุณ</h4>
                         <div class="space-y-2 max-h-48 overflow-y-auto pr-2">${cartHtml}</div>
-                        <div class="border-t border-slate-700 pt-3 flex justify-between font-bold text-sm">
+                        <div class="border-t border-slate-200 pt-3 flex justify-between font-bold text-sm text-slate-800">
                             <span>ยอดรวมทั้งหมด:</span>
-                            <span class="text-cyan-400">฿${total.toLocaleString()}</span>
+                            <span class="text-cyan-600">฿${total.toLocaleString()}</span>
                         </div>
                     </div>
-                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 space-y-3">
-                        <h4 class="text-sm font-bold text-indigo-400 font-title">📍 ที่อยู่จัดส่งละเอียด & ชำระเงิน</h4>
-                        <input type="text" id="addr-detail" placeholder="บ้านเลขที่ / อาคาร / ซอย / ถนน" class="w-full bg-slate-900 border border-slate-600 rounded-xl px-3 py-2 text-xs text-white">
+                    <div class="bg-sky-50/40 p-5 rounded-2xl border border-sky-100 space-y-3 shadow-sm">
+                        <h4 class="text-sm font-bold text-indigo-600 font-title">📍 ที่อยู่จัดส่งละเอียด & ชำระเงิน</h4>
+                        <input type="text" id="addr-detail" placeholder="บ้านเลขที่ / อาคาร / ซอย / ถนน" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 shadow-sm">
                         <div class="grid grid-cols-2 gap-2">
-                            <input type="text" id="addr-subdistrict" placeholder="แขวง / ตำบล" class="bg-slate-900 border border-slate-600 rounded-xl px-3 py-2 text-xs text-white">
-                            <input type="text" id="addr-district" placeholder="เขต / อำเภอ" class="bg-slate-900 border border-slate-600 rounded-xl px-3 py-2 text-xs text-white">
+                            <input type="text" id="addr-subdistrict" placeholder="แขวง / ตำบล" class="bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 shadow-sm">
+                            <input type="text" id="addr-district" placeholder="เขต / อำเภอ" class="bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 shadow-sm">
                         </div>
                         <div class="grid grid-cols-2 gap-2">
-                            <input type="text" id="addr-province" placeholder="จังหวัด" class="bg-slate-900 border border-slate-600 rounded-xl px-3 py-2 text-xs text-white">
-                            <input type="text" id="addr-zipcode" placeholder="รหัสไปรษณีย์" class="bg-slate-900 border border-slate-600 rounded-xl px-3 py-2 text-xs text-white">
+                            <input type="text" id="addr-province" placeholder="จังหวัด" class="bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 shadow-sm">
+                            <input type="text" id="addr-zipcode" placeholder="รหัสไปรษณีย์" class="bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 shadow-sm">
                         </div>
-                        <select id="payment-method" class="w-full bg-slate-900 border border-slate-600 rounded-xl px-3 py-2 text-xs text-white">
+                        <select id="payment-method" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 shadow-sm">
                             <option>โอนผ่านธนาคาร (QR PromptPay)</option>
                             <option>บัตรเครดิต / เดบิต</option>
                             <option>เก็บเงินปลายทาง</option>
                         </select>
-                        <button onclick="checkoutOrder()" class="w-full bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-400 text-white font-medium py-2.5 rounded-xl text-xs transition-all">ยืนยันคำสั่งซื้อและที่อยู่</button>
+                        <button onclick="checkoutOrder()" class="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 text-white font-medium py-2.5 rounded-xl text-xs transition-all shadow-md">ยืนยันคำสั่งซื้อและที่อยู่</button>
                     </div>
                 </div>
             `;
@@ -658,22 +668,22 @@
         function renderReviewView() {
             const bodyContent = document.getElementById('modal-body-content');
             let reviewsHtml = reviews.map(r => `
-                <div class="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 space-y-1">
+                <div class="bg-sky-50/50 p-4 rounded-2xl border border-sky-100 space-y-1 shadow-sm">
                     <div class="flex justify-between items-center">
-                        <span class="text-xs font-bold text-white">${r.name}</span>
+                        <span class="text-xs font-bold text-slate-800">${r.name}</span>
                         <span class="text-[10px] text-slate-400">${r.date}</span>
                     </div>
-                    <div class="text-amber-400 text-xs">${"⭐".repeat(r.rating)}</div>
-                    <p class="text-xs text-slate-300">${r.comment}</p>
+                    <div class="text-amber-500 text-xs">${"⭐".repeat(r.rating)}</div>
+                    <p class="text-xs text-slate-600">${r.comment}</p>
                 </div>
             `).join('');
 
             bodyContent.innerHTML = `
                 <div class="space-y-6">
-                    <div class="space-y-3 bg-slate-800/50 p-4 rounded-2xl border border-slate-700">
-                        <h4 class="text-sm font-bold text-pink-400 font-title">✍️ เขียนรีวิว & ให้คะแนนบริการ</h4>
+                    <div class="space-y-3 bg-sky-50/40 p-4 rounded-2xl border border-sky-100 shadow-sm">
+                        <h4 class="text-sm font-bold text-pink-600 font-title">✍️ เขียนรีวิว & ให้คะแนนบริการ</h4>
                         <div class="flex items-center gap-2">
-                            <span class="text-xs text-slate-300">ให้คะแนน (ดาว):</span>
+                            <span class="text-xs text-slate-600">ให้คะแนน (ดาว):</span>
                             <div class="flex gap-1 cursor-pointer">
                                 <span onclick="setRating(1)" class="text-lg">⭐</span>
                                 <span onclick="setRating(2)" class="text-lg">⭐</span>
@@ -682,11 +692,11 @@
                                 <span onclick="setRating(5)" class="text-lg">⭐</span>
                             </div>
                         </div>
-                        <textarea id="review-comment" placeholder="พิมพ์แสดงความคิดเห็นของคุณ..." class="w-full bg-slate-900 border border-slate-600 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-pink-400 h-20"></textarea>
-                        <button onclick="submitReview()" class="bg-pink-600 hover:bg-pink-500 text-white text-xs px-4 py-2 rounded-xl transition-all font-title">ส่งรีวิวของคุณ</button>
+                        <textarea id="review-comment" placeholder="พิมพ์แสดงความคิดเห็นของคุณ..." class="w-full bg-white border border-slate-300 rounded-xl p-3 text-xs text-slate-800 focus:outline-none focus:border-pink-500 h-20 shadow-sm"></textarea>
+                        <button onclick="submitReview()" class="bg-pink-600 hover:bg-pink-700 text-white text-xs px-4 py-2 rounded-xl transition-all font-title shadow-md">ส่งรีวิวของคุณ</button>
                     </div>
                     <div class="space-y-3">
-                        <h4 class="text-sm font-bold text-white font-title">💬 ความคิดเห็นจากลูกค้าทั้งหมด (${reviews.length} รายการ)</h4>
+                        <h4 class="text-sm font-bold text-slate-800 font-title">💬 ความคิดเห็นจากลูกค้าทั้งหมด (${reviews.length} รายการ)</h4>
                         <div class="space-y-3 max-h-60 overflow-y-auto pr-2">${reviewsHtml}</div>
                     </div>
                 </div>
@@ -713,7 +723,7 @@
             setTimeout(() => { modal.classList.add('hidden'); }, 300);
         }
 
-        window.onclick = function(event) {
+-        window.onclick = function(event) {
             const modal = document.getElementById('detail-modal');
             const emailModal = document.getElementById('email-preview-modal');
             if (event.target == modal) closeModal();
